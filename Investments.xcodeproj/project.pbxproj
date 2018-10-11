@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E95E5462167732100F8933A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5452167732100F8933A /* AppDelegate.swift */; };
+		4E95E5482167732100F8933A /* ForecasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5472167732100F8933A /* ForecasterViewController.swift */; };
+		4E95E54B2167732100F8933A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E5492167732100F8933A /* Main.storyboard */; };
+		4E95E54D2167732800F8933A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E54C2167732800F8933A /* Assets.xcassets */; };
+		4E95E5502167732800F8933A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E54E2167732800F8933A /* LaunchScreen.storyboard */; };
+		4E95E57821679BA200F8933A /* Fort Foundry - Rift Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57421678C1A00F8933A /* Fort Foundry - Rift Bold Italic.otf */; };
+		4E95E57921679BA200F8933A /* Fort Foundry - Rift Demi Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55E21678C1800F8933A /* Fort Foundry - Rift Demi Italic.otf */; };
+		4E95E57A21679BA200F8933A /* Fort Foundry - Rift Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56C21678C1900F8933A /* Fort Foundry - Rift Italic.otf */; };
+		4E95E57B21679BA200F8933A /* Fort Foundry - Rift Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55A21678C1700F8933A /* Fort Foundry - Rift Light Italic.otf */; };
+		4E95E57C21679BA200F8933A /* Fort Foundry - Rift Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56821678C1900F8933A /* Fort Foundry - Rift Medium Italic.otf */; };
+		4E95E57D21679BA200F8933A /* Fort Foundry - Rift Soft Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56621678C1900F8933A /* Fort Foundry - Rift Soft Bold Italic.otf */; };
+		4E95E57E21679BA200F8933A /* Fort Foundry - Rift Soft Demi Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56121678C1800F8933A /* Fort Foundry - Rift Soft Demi Italic.otf */; };
+		4E95E57F21679BA200F8933A /* Fort Foundry - Rift Soft Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57221678C1A00F8933A /* Fort Foundry - Rift Soft Italic.otf */; };
+		4E95E58021679BA200F8933A /* Fort Foundry - Rift Soft Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55821678C1700F8933A /* Fort Foundry - Rift Soft Light Italic.otf */; };
+		4E95E58121679BA200F8933A /* Fort Foundry - Rift Soft Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55B21678C1800F8933A /* Fort Foundry - Rift Soft Medium Italic.otf */; };
+		4E95E58221679BA200F8933A /* Fort Foundry - Rift-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55921678C1700F8933A /* Fort Foundry - Rift-Bold.otf */; };
+		4E95E58321679BA200F8933A /* Fort Foundry - Rift-Demi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57721678C1A00F8933A /* Fort Foundry - Rift-Demi.otf */; };
+		4E95E58421679BA200F8933A /* Fort Foundry - Rift-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56E21678C1900F8933A /* Fort Foundry - Rift-Light.otf */; };
+		4E95E58521679BA200F8933A /* Fort Foundry - Rift-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56B21678C1900F8933A /* Fort Foundry - Rift-Medium.otf */; };
+		4E95E58621679BA200F8933A /* Fort Foundry - Rift-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56321678C1800F8933A /* Fort Foundry - Rift-Regular.otf */; };
+		4E95E58721679BA200F8933A /* Fort Foundry - RiftSoft-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56521678C1800F8933A /* Fort Foundry - RiftSoft-Bold.otf */; };
+		4E95E58821679BA200F8933A /* Fort Foundry - RiftSoft-Demi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56421678C1800F8933A /* Fort Foundry - RiftSoft-Demi.otf */; };
+		4E95E58921679BA200F8933A /* Fort Foundry - RiftSoft-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57621678C1A00F8933A /* Fort Foundry - RiftSoft-Light.otf */; };
+		4E95E58A21679BA200F8933A /* Fort Foundry - RiftSoft-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57321678C1A00F8933A /* Fort Foundry - RiftSoft-Medium.otf */; };
+		4E95E58B21679BA200F8933A /* Fort Foundry - RiftSoft-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57021678C1A00F8933A /* Fort Foundry - RiftSoft-Regular.otf */; };
+		4E95E58C21679BA200F8933A /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56F21678C1900F8933A /* SourceSansPro-Black.ttf */; };
+		4E95E58D21679BA200F8933A /* SourceSansPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56721678C1900F8933A /* SourceSansPro-BlackItalic.ttf */; };
+		4E95E58E21679BA200F8933A /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55C21678C1800F8933A /* SourceSansPro-Bold.ttf */; };
+		4E95E58F21679BA200F8933A /* SourceSansPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56921678C1900F8933A /* SourceSansPro-BoldItalic.ttf */; };
+		4E95E59021679BA200F8933A /* SourceSansPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55F21678C1800F8933A /* SourceSansPro-ExtraLight.ttf */; };
+		4E95E59121679BA200F8933A /* SourceSansPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56A21678C1900F8933A /* SourceSansPro-ExtraLightItalic.ttf */; };
+		4E95E59221679BA200F8933A /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56021678C1800F8933A /* SourceSansPro-Italic.ttf */; };
+		4E95E59321679BA200F8933A /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56221678C1800F8933A /* SourceSansPro-Light.ttf */; };
+		4E95E59421679BA200F8933A /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57521678C1A00F8933A /* SourceSansPro-LightItalic.ttf */; };
+		4E95E59521679BA200F8933A /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57121678C1A00F8933A /* SourceSansPro-Regular.ttf */; };
+		4E95E59621679BA200F8933A /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55D21678C1800F8933A /* SourceSansPro-SemiBold.ttf */; };
+		4E95E59721679BA200F8933A /* SourceSansPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56D21678C1900F8933A /* SourceSansPro-SemiBoldItalic.ttf */; };
+		4E95E599216B5DF100F8933A /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E598216B5DF100F8933A /* ResultsViewController.swift */; };
+		4E95E59B216B5EC200F8933A /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E59A216B5EC200F8933A /* PickerView.swift */; };
+		4E95E59D216E085C00F8933A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E59C216E085C00F8933A /* Constants.swift */; };
+		A0CF204C5C3C29CBF13D0C8C /* Pods_Investments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3A910D1F1BC445417055D5AB /* Pods-Investments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Investments/Pods-Investments.release.xcconfig"; sourceTree = "<group>"; };
+		4E95E5422167732100F8933A /* Investments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Investments.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E95E5452167732100F8933A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4E95E5472167732100F8933A /* ForecasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecasterViewController.swift; sourceTree = "<group>"; };
+		4E95E54A2167732100F8933A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4E95E54C2167732800F8933A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E95E54F2167732800F8933A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E95E5512167732800F8933A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E95E55821678C1700F8933A /* Fort Foundry - Rift Soft Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Soft Light Italic.otf"; sourceTree = "<group>"; };
+		4E95E55921678C1700F8933A /* Fort Foundry - Rift-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift-Bold.otf"; sourceTree = "<group>"; };
+		4E95E55A21678C1700F8933A /* Fort Foundry - Rift Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Light Italic.otf"; sourceTree = "<group>"; };
+		4E95E55B21678C1800F8933A /* Fort Foundry - Rift Soft Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Soft Medium Italic.otf"; sourceTree = "<group>"; };
+		4E95E55C21678C1800F8933A /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
+		4E95E55D21678C1800F8933A /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		4E95E55E21678C1800F8933A /* Fort Foundry - Rift Demi Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Demi Italic.otf"; sourceTree = "<group>"; };
+		4E95E55F21678C1800F8933A /* SourceSansPro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLight.ttf"; sourceTree = "<group>"; };
+		4E95E56021678C1800F8933A /* SourceSansPro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Italic.ttf"; sourceTree = "<group>"; };
+		4E95E56121678C1800F8933A /* Fort Foundry - Rift Soft Demi Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Soft Demi Italic.otf"; sourceTree = "<group>"; };
+		4E95E56221678C1800F8933A /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
+		4E95E56321678C1800F8933A /* Fort Foundry - Rift-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift-Regular.otf"; sourceTree = "<group>"; };
+		4E95E56421678C1800F8933A /* Fort Foundry - RiftSoft-Demi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - RiftSoft-Demi.otf"; sourceTree = "<group>"; };
+		4E95E56521678C1800F8933A /* Fort Foundry - RiftSoft-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - RiftSoft-Bold.otf"; sourceTree = "<group>"; };
+		4E95E56621678C1900F8933A /* Fort Foundry - Rift Soft Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Soft Bold Italic.otf"; sourceTree = "<group>"; };
+		4E95E56721678C1900F8933A /* SourceSansPro-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BlackItalic.ttf"; sourceTree = "<group>"; };
+		4E95E56821678C1900F8933A /* Fort Foundry - Rift Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Medium Italic.otf"; sourceTree = "<group>"; };
+		4E95E56921678C1900F8933A /* SourceSansPro-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4E95E56A21678C1900F8933A /* SourceSansPro-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		4E95E56B21678C1900F8933A /* Fort Foundry - Rift-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift-Medium.otf"; sourceTree = "<group>"; };
+		4E95E56C21678C1900F8933A /* Fort Foundry - Rift Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Italic.otf"; sourceTree = "<group>"; };
+		4E95E56D21678C1900F8933A /* SourceSansPro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		4E95E56E21678C1900F8933A /* Fort Foundry - Rift-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift-Light.otf"; sourceTree = "<group>"; };
+		4E95E56F21678C1900F8933A /* SourceSansPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.ttf"; sourceTree = "<group>"; };
+		4E95E57021678C1A00F8933A /* Fort Foundry - RiftSoft-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - RiftSoft-Regular.otf"; sourceTree = "<group>"; };
+		4E95E57121678C1A00F8933A /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		4E95E57221678C1A00F8933A /* Fort Foundry - Rift Soft Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Soft Italic.otf"; sourceTree = "<group>"; };
+		4E95E57321678C1A00F8933A /* Fort Foundry - RiftSoft-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - RiftSoft-Medium.otf"; sourceTree = "<group>"; };
+		4E95E57421678C1A00F8933A /* Fort Foundry - Rift Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift Bold Italic.otf"; sourceTree = "<group>"; };
+		4E95E57521678C1A00F8933A /* SourceSansPro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-LightItalic.ttf"; sourceTree = "<group>"; };
+		4E95E57621678C1A00F8933A /* Fort Foundry - RiftSoft-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - RiftSoft-Light.otf"; sourceTree = "<group>"; };
+		4E95E57721678C1A00F8933A /* Fort Foundry - Rift-Demi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fort Foundry - Rift-Demi.otf"; sourceTree = "<group>"; };
+		4E95E598216B5DF100F8933A /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		4E95E59A216B5EC200F8933A /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		4E95E59C216E085C00F8933A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		705A31041BFCF14EBD4243FE /* Pods-Investments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investments/Pods-Investments.debug.xcconfig"; sourceTree = "<group>"; };
+		7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4E95E53F2167732100F8933A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0CF204C5C3C29CBF13D0C8C /* Pods_Investments.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D89C89E2D580CB4EEBF0966 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				705A31041BFCF14EBD4243FE /* Pods-Investments.debug.xcconfig */,
+				3A910D1F1BC445417055D5AB /* Pods-Investments.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		29E7EEDA1C33E5C8A23183B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E95E5392167732100F8933A = {
+			isa = PBXGroup;
+			children = (
+				4E95E5442167732100F8933A /* Investments */,
+				4E95E5432167732100F8933A /* Products */,
+				0D89C89E2D580CB4EEBF0966 /* Pods */,
+				29E7EEDA1C33E5C8A23183B9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4E95E5432167732100F8933A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E5422167732100F8933A /* Investments.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E95E5442167732100F8933A /* Investments */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E5452167732100F8933A /* AppDelegate.swift */,
+				4E95E5472167732100F8933A /* ForecasterViewController.swift */,
+				4E95E598216B5DF100F8933A /* ResultsViewController.swift */,
+				4E95E5492167732100F8933A /* Main.storyboard */,
+				4E95E54C2167732800F8933A /* Assets.xcassets */,
+				4E95E54E2167732800F8933A /* LaunchScreen.storyboard */,
+				4E95E55721678C0300F8933A /* Fonts */,
+				4E95E5512167732800F8933A /* Info.plist */,
+				4E95E59A216B5EC200F8933A /* PickerView.swift */,
+				4E95E59C216E085C00F8933A /* Constants.swift */,
+			);
+			path = Investments;
+			sourceTree = "<group>";
+		};
+		4E95E55721678C0300F8933A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E57421678C1A00F8933A /* Fort Foundry - Rift Bold Italic.otf */,
+				4E95E55E21678C1800F8933A /* Fort Foundry - Rift Demi Italic.otf */,
+				4E95E56C21678C1900F8933A /* Fort Foundry - Rift Italic.otf */,
+				4E95E55A21678C1700F8933A /* Fort Foundry - Rift Light Italic.otf */,
+				4E95E56821678C1900F8933A /* Fort Foundry - Rift Medium Italic.otf */,
+				4E95E56621678C1900F8933A /* Fort Foundry - Rift Soft Bold Italic.otf */,
+				4E95E56121678C1800F8933A /* Fort Foundry - Rift Soft Demi Italic.otf */,
+				4E95E57221678C1A00F8933A /* Fort Foundry - Rift Soft Italic.otf */,
+				4E95E55821678C1700F8933A /* Fort Foundry - Rift Soft Light Italic.otf */,
+				4E95E55B21678C1800F8933A /* Fort Foundry - Rift Soft Medium Italic.otf */,
+				4E95E55921678C1700F8933A /* Fort Foundry - Rift-Bold.otf */,
+				4E95E57721678C1A00F8933A /* Fort Foundry - Rift-Demi.otf */,
+				4E95E56E21678C1900F8933A /* Fort Foundry - Rift-Light.otf */,
+				4E95E56B21678C1900F8933A /* Fort Foundry - Rift-Medium.otf */,
+				4E95E56321678C1800F8933A /* Fort Foundry - Rift-Regular.otf */,
+				4E95E56521678C1800F8933A /* Fort Foundry - RiftSoft-Bold.otf */,
+				4E95E56421678C1800F8933A /* Fort Foundry - RiftSoft-Demi.otf */,
+				4E95E57621678C1A00F8933A /* Fort Foundry - RiftSoft-Light.otf */,
+				4E95E57321678C1A00F8933A /* Fort Foundry - RiftSoft-Medium.otf */,
+				4E95E57021678C1A00F8933A /* Fort Foundry - RiftSoft-Regular.otf */,
+				4E95E56F21678C1900F8933A /* SourceSansPro-Black.ttf */,
+				4E95E56721678C1900F8933A /* SourceSansPro-BlackItalic.ttf */,
+				4E95E55C21678C1800F8933A /* SourceSansPro-Bold.ttf */,
+				4E95E56921678C1900F8933A /* SourceSansPro-BoldItalic.ttf */,
+				4E95E55F21678C1800F8933A /* SourceSansPro-ExtraLight.ttf */,
+				4E95E56A21678C1900F8933A /* SourceSansPro-ExtraLightItalic.ttf */,
+				4E95E56021678C1800F8933A /* SourceSansPro-Italic.ttf */,
+				4E95E56221678C1800F8933A /* SourceSansPro-Light.ttf */,
+				4E95E57521678C1A00F8933A /* SourceSansPro-LightItalic.ttf */,
+				4E95E57121678C1A00F8933A /* SourceSansPro-Regular.ttf */,
+				4E95E55D21678C1800F8933A /* SourceSansPro-SemiBold.ttf */,
+				4E95E56D21678C1900F8933A /* SourceSansPro-SemiBoldItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E95E5412167732100F8933A /* Investments */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E95E5542167732800F8933A /* Build configuration list for PBXNativeTarget "Investments" */;
+			buildPhases = (
+				7EAEA47307469E3ED5C7DA38 /* [CP] Check Pods Manifest.lock */,
+				4E95E53E2167732100F8933A /* Sources */,
+				4E95E53F2167732100F8933A /* Frameworks */,
+				4E95E5402167732100F8933A /* Resources */,
+				D506843BF9F316596F0CBF87 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Investments;
+			productName = Investments;
+			productReference = 4E95E5422167732100F8933A /* Investments.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E95E53A2167732100F8933A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Adam Woodcock";
+				TargetAttributes = {
+					4E95E5412167732100F8933A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 4E95E53D2167732100F8933A /* Build configuration list for PBXProject "Investments" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4E95E5392167732100F8933A;
+			productRefGroup = 4E95E5432167732100F8933A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E95E5412167732100F8933A /* Investments */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4E95E5402167732100F8933A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E95E5502167732800F8933A /* LaunchScreen.storyboard in Resources */,
+				4E95E58F21679BA200F8933A /* SourceSansPro-BoldItalic.ttf in Resources */,
+				4E95E58B21679BA200F8933A /* Fort Foundry - RiftSoft-Regular.otf in Resources */,
+				4E95E57821679BA200F8933A /* Fort Foundry - Rift Bold Italic.otf in Resources */,
+				4E95E59221679BA200F8933A /* SourceSansPro-Italic.ttf in Resources */,
+				4E95E58821679BA200F8933A /* Fort Foundry - RiftSoft-Demi.otf in Resources */,
+				4E95E58C21679BA200F8933A /* SourceSansPro-Black.ttf in Resources */,
+				4E95E58A21679BA200F8933A /* Fort Foundry - RiftSoft-Medium.otf in Resources */,
+				4E95E57E21679BA200F8933A /* Fort Foundry - Rift Soft Demi Italic.otf in Resources */,
+				4E95E59021679BA200F8933A /* SourceSansPro-ExtraLight.ttf in Resources */,
+				4E95E58921679BA200F8933A /* Fort Foundry - RiftSoft-Light.otf in Resources */,
+				4E95E59421679BA200F8933A /* SourceSansPro-LightItalic.ttf in Resources */,
+				4E95E57921679BA200F8933A /* Fort Foundry - Rift Demi Italic.otf in Resources */,
+				4E95E58321679BA200F8933A /* Fort Foundry - Rift-Demi.otf in Resources */,
+				4E95E57D21679BA200F8933A /* Fort Foundry - Rift Soft Bold Italic.otf in Resources */,
+				4E95E57B21679BA200F8933A /* Fort Foundry - Rift Light Italic.otf in Resources */,
+				4E95E59321679BA200F8933A /* SourceSansPro-Light.ttf in Resources */,
+				4E95E59521679BA200F8933A /* SourceSansPro-Regular.ttf in Resources */,
+				4E95E57F21679BA200F8933A /* Fort Foundry - Rift Soft Italic.otf in Resources */,
+				4E95E57A21679BA200F8933A /* Fort Foundry - Rift Italic.otf in Resources */,
+				4E95E58121679BA200F8933A /* Fort Foundry - Rift Soft Medium Italic.otf in Resources */,
+				4E95E59721679BA200F8933A /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
+				4E95E59121679BA200F8933A /* SourceSansPro-ExtraLightItalic.ttf in Resources */,
+				4E95E54D2167732800F8933A /* Assets.xcassets in Resources */,
+				4E95E54B2167732100F8933A /* Main.storyboard in Resources */,
+				4E95E58221679BA200F8933A /* Fort Foundry - Rift-Bold.otf in Resources */,
+				4E95E58721679BA200F8933A /* Fort Foundry - RiftSoft-Bold.otf in Resources */,
+				4E95E58421679BA200F8933A /* Fort Foundry - Rift-Light.otf in Resources */,
+				4E95E59621679BA200F8933A /* SourceSansPro-SemiBold.ttf in Resources */,
+				4E95E58021679BA200F8933A /* Fort Foundry - Rift Soft Light Italic.otf in Resources */,
+				4E95E58E21679BA200F8933A /* SourceSansPro-Bold.ttf in Resources */,
+				4E95E58521679BA200F8933A /* Fort Foundry - Rift-Medium.otf in Resources */,
+				4E95E58D21679BA200F8933A /* SourceSansPro-BlackItalic.ttf in Resources */,
+				4E95E57C21679BA200F8933A /* Fort Foundry - Rift Medium Italic.otf in Resources */,
+				4E95E58621679BA200F8933A /* Fort Foundry - Rift-Regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7EAEA47307469E3ED5C7DA38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Investments-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D506843BF9F316596F0CBF87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Investments/Pods-Investments-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Investments/Pods-Investments-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4E95E53E2167732100F8933A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E95E59D216E085C00F8933A /* Constants.swift in Sources */,
+				4E95E59B216B5EC200F8933A /* PickerView.swift in Sources */,
+				4E95E5482167732100F8933A /* ForecasterViewController.swift in Sources */,
+				4E95E5462167732100F8933A /* AppDelegate.swift in Sources */,
+				4E95E599216B5DF100F8933A /* ResultsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4E95E5492167732100F8933A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E95E54A2167732100F8933A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4E95E54E2167732800F8933A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E95E54F2167732800F8933A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4E95E5522167732800F8933A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4E95E5532167732800F8933A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4E95E5552167732800F8933A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 705A31041BFCF14EBD4243FE /* Pods-Investments.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XKAWLX395L;
+				INFOPLIST_FILE = Investments/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamwoodcock.Investments;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4E95E5562167732800F8933A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A910D1F1BC445417055D5AB /* Pods-Investments.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XKAWLX395L;
+				INFOPLIST_FILE = Investments/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamwoodcock.Investments;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4E95E53D2167732100F8933A /* Build configuration list for PBXProject "Investments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E95E5522167732800F8933A /* Debug */,
+				4E95E5532167732800F8933A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E95E5542167732800F8933A /* Build configuration list for PBXNativeTarget "Investments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E95E5552167732800F8933A /* Debug */,
+				4E95E5562167732800F8933A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4E95E53A2167732100F8933A /* Project object */;
+}
