@@ -10,8 +10,8 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
-    var investmentStringAmount : String!
-    var withdrawalStringAmount : String!
+    var investmentAmount : Int!
+    var withdrawalAmount : Int!
     var growth : Float!
     var investmentDurationNumber : Int!
     var withdrawalDurationNumber : Int!

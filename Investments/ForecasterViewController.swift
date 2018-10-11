@@ -30,6 +30,8 @@ class ForecasterViewController: UIViewController {
     var pickedWithdrawalNumber : Int = 0
     var pickedPercentage : Float = 0.0
     var autoPercent : Float = 8.32
+    var pickedInvestmentAmount : Int = 0
+    var pickedWithdrawalAmount : Int = 0
     
     var investmentLabelNumber : String = ""
     var investmentLabelDate : String = ""
@@ -183,8 +185,8 @@ class ForecasterViewController: UIViewController {
         if segue.identifier == "goToResults" {
             let destinationVC = segue.destination as! ResultsViewController
             
-            destinationVC.investmentStringAmount = investmentAmountTextField.text
-            destinationVC.withdrawalStringAmount = withdrawalAmountTextField.text
+            destinationVC.investmentAmount = pickedInvestmentAmount
+            destinationVC.withdrawalAmount = pickedWithdrawalAmount
             destinationVC.growth = pickedPercentage
             destinationVC.investmentDurationNumber = pickedInvestmentNumber
             destinationVC.withdrawalDurationNumber = pickedWithdrawalNumber
@@ -194,6 +196,7 @@ class ForecasterViewController: UIViewController {
     }
 }
 
+//MARK: - PickerView Methods
 extension ForecasterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     //Creating an action for the custom 'Done' button in the picker action sheet
     @objc func okay(sender: UIButton!) {
@@ -346,6 +349,7 @@ extension ForecasterViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
 }
 
+//MARK: - TextField Delegate Methods
 extension ForecasterViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -364,7 +368,8 @@ extension ForecasterViewController: UITextFieldDelegate {
         //If TextFields are not empty then validate the amounts
         if textField == investmentAmountTextField {
             if let text = investmentAmountTextField.text {
-                textField.text = Constants.convertStringToFormattedString(input: text)
+                textField.text = Constants.convertStringToFormattedString(input: text).stringValue
+                pickedInvestmentNumber = Constants.convertStringToFormattedString(input: text).integerValue
                 
                 return true
             } else {
@@ -374,7 +379,8 @@ extension ForecasterViewController: UITextFieldDelegate {
             
         } else if textField == withdrawalAmountTextField {
             if let text = withdrawalAmountTextField.text {
-                textField.text = Constants.convertStringToFormattedString(input: text)
+                textField.text = Constants.convertStringToFormattedString(input: text).stringValue
+                pickedWithdrawalNumber = Constants.convertStringToFormattedString(input: text).integerValue
                 
                 return true
             } else {
