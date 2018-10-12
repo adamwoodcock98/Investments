@@ -41,6 +41,8 @@ class ForecasterViewController: UIViewController {
     //Defining picker constants to access them as if they were IBOutlets
     let picker1 = UIPickerView()
     let picker2 = UIPickerView()
+    let picker3 = UIPickerView()
+    let picker4 = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,7 @@ class ForecasterViewController: UIViewController {
         withdrawalAmountTextField.borderStyle = .none
         investmentAmountTextField.delegate = self
         withdrawalAmountTextField.delegate = self
-        autoPercentLabel.text = "\(autoPercent)%" //FIXME: Add the variable for auto-calculated growth when available
+        autoPercentLabel.text = "\(autoPercent)%"
         
         //Hide/State Adjustments
         percentSlider.isHidden = true
@@ -65,7 +67,8 @@ class ForecasterViewController: UIViewController {
         
         //Enabling custom method
         self.hideKeyboardWhenTappedAround()
-    
+        
+        pickedPercentage = 8.32
         validateCompletionAndEnableNextButton()
     }
     
@@ -76,6 +79,7 @@ class ForecasterViewController: UIViewController {
             manualPercentLabel.text = "Auto %"
             percentSlider.isHidden = true
             autoPercentLabel.isHidden = false
+            pickedPercentage = autoPercent
         } else {
             manualPercentLabel.text = "Manual %"
             percentSlider.isHidden = false
@@ -87,6 +91,7 @@ class ForecasterViewController: UIViewController {
     @IBAction func sliderChanged(_ sender: Any) {
         sliderValue = percentSlider.value.rounded()
         manualPercentLabel.text = "\(sliderValue)%"
+        pickedPercentage = sliderValue
     }
     
     @IBAction func nextTapped(_ sender: UIBarButtonItem) {
@@ -127,47 +132,43 @@ class ForecasterViewController: UIViewController {
         var percentValue = false
         
         if investmentAmountTextField.text != "" {
-            print("investment amount NOT nil")
+            //print("investment amount NOT nil")
             investmentAmount = true
         } else {
-            print("investment amount IS nil")
+            //print("investment amount IS nil")
             investmentAmount = false
         }
         
         if withdrawalAmountTextField.text != "" {
-            print("withdrawal amount NOT nil")
+            //print("withdrawal amount NOT nil")
             withdrawalAmount = true
         } else {
-            print("withdrawal amount IS nil")
+            //print("withdrawal amount IS nil")
             withdrawalAmount = false
         }
         
         if pickedInvestmentNumber > 0 {
-            print("picked investment number NOT nil")
+            //print("picked investment number NOT nil")
             pickedInvestment = true
         } else {
-            print("picked investment number IS nil")
+            //print("picked investment number IS nil")
             pickedInvestment = false
         }
         
         if pickedWithdrawalNumber > 0 {
-            print("picked withdrawal number NOT nil")
+            //print("picked withdrawal number NOT nil")
             pickedWithdrawal = true
         } else {
-            print("picked withdrawal number IS nil")
+            //print("picked withdrawal number IS nil")
             pickedWithdrawal = false
         }
         
         if sliderValue > 0 && percentSwitch.isOn == false || autoPercentLabel.text != nil && percentSwitch.isOn == true {
-            print("growth % NOT nil")
+            //print("growth % NOT nil")
             percentValue = true
-            if percentSwitch.isOn == true {
-                pickedPercentage = autoPercent
-            } else {
-                pickedPercentage = sliderValue
-            }
+            
         } else {
-            print("growth % IS nil")
+            //print("growth % IS nil")
             percentValue = false
         }
         
@@ -192,6 +193,14 @@ class ForecasterViewController: UIViewController {
             destinationVC.withdrawalDurationNumber = pickedWithdrawalNumber
             destinationVC.investmentDurationDate = investmentLabelDate
             destinationVC.withdrawalDurationDate = withdrawalLabelDate
+            //Tests:
+//            print("Investment amount: ", destinationVC.investmentAmount)
+//            print("Withdrawal amount: ", destinationVC.withdrawalAmount)
+            print("Growth: ", destinationVC.growth)
+//            print("Investment duration number: ", destinationVC.investmentDurationNumber)
+//            print("Withdrawal duration number: ", destinationVC.withdrawalDurationNumber)
+//            print("Investment duration date: ", destinationVC.investmentDurationDate)
+//            print("Withdrawal duration date: ", destinationVC.withdrawalDurationDate)
         }
     }
 }
@@ -211,19 +220,23 @@ extension ForecasterViewController: UIPickerViewDataSource, UIPickerViewDelegate
         //Creating pickers frames and objects, left:
         let picker1Frame : CGRect = CGRect(x: 0, y: 2, width: (alertWidth / 2) - 4, height: 100)
         picker1.frame = picker1Frame
+        picker3.frame = picker1Frame
         //right:
         let picker2Frame : CGRect = CGRect(x: (alertWidth / 2) + 2, y: 2, width: (alertWidth / 2) - 4, height: 100)
         picker2.frame = picker2Frame
+        picker4.frame = picker2Frame
         
         //Assigning delegates and data sources for pickers
         picker1.delegate = self
         picker1.dataSource = self
         picker2.delegate = self
         picker2.dataSource = self
+        picker3.delegate = self
+        picker3.dataSource = self
+        picker4.delegate = self
+        picker4.dataSource = self
         
-        //Adding pickers to the alert view
-        alert.view.addSubview(picker1)
-        alert.view.addSubview(picker2)
+        
         alert.view.clipsToBounds = true
         
         //Creating and configuring the 'Done' button
@@ -241,22 +254,26 @@ extension ForecasterViewController: UIPickerViewDataSource, UIPickerViewDelegate
         //Adding the button to the view
         alert.view.addSubview(button)
         
-        //Assigning tags to each picker based on the field that sent the user there
+        //Adding the relevant picker to the view based on which field sent it there
         if sentBy == "Investments" {
-            picker1.tag = 3
-            picker2.tag = 4
+            alert.view.addSubview(picker1)
+            alert.view.addSubview(picker2)
+            //Setting default values
+            investmentLabelDate = "Weeks"
+            investmentLabelNumber = "1"
+            pickedInvestmentNumber = 1
+            picker1.selectRow(0, inComponent: 0, animated: true)
+            picker2.selectRow(0, inComponent: 0, animated: true)
         } else if sentBy == "Withdrawals" {
-            picker1.tag = 5
-            picker2.tag = 6
+            alert.view.addSubview(picker3)
+            alert.view.addSubview(picker4)
+            //Setting default values
+            withdrawalLabelDate = "Weeks"
+            withdrawalLabelNumber = "1"
+            pickedWithdrawalNumber = 1
+            picker3.selectRow(0, inComponent: 0, animated: true)
+            picker4.selectRow(0, inComponent: 0, animated: true)
         }
-        
-        //Setting default values
-        investmentLabelDate = "Weeks"
-        investmentLabelNumber = "1"
-        pickedInvestmentNumber = 1
-        withdrawalLabelDate = "Weeks"
-        withdrawalLabelNumber = "1"
-        pickedWithdrawalNumber = 1
         
         //Validation
         validateCompletionAndEnableNextButton()
@@ -273,31 +290,31 @@ extension ForecasterViewController: UIPickerViewDataSource, UIPickerViewDelegate
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch pickerView.tag {
-        case 3: return whichInvestmentPicker.count
-        case 4: return Constants.pickerComponent2.count
-        case 5: return whichWithdrawalPicker.count
-        case 6: return Constants.pickerComponent2.count
+        switch pickerView {
+        case picker1: return whichInvestmentPicker.count
+        case picker2: return Constants.pickerComponent2.count
+        case picker3: return whichWithdrawalPicker.count
+        case picker4: return Constants.pickerComponent2.count
         default: return 0
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        switch pickerView.tag {
-        case 3: return NSAttributedString(string: "\(whichInvestmentPicker[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
-        case 4: return NSAttributedString(string: "\(Constants.pickerComponent2[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
-        case 5: return NSAttributedString(string: "\(whichWithdrawalPicker[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
-        case 6: return NSAttributedString(string: "\(Constants.pickerComponent2[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
+        switch pickerView {
+        case picker1: return NSAttributedString(string: "\(whichInvestmentPicker[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
+        case picker2: return NSAttributedString(string: "\(Constants.pickerComponent2[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
+        case picker3: return NSAttributedString(string: "\(whichWithdrawalPicker[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
+        case picker4: return NSAttributedString(string: "\(Constants.pickerComponent2[row])", attributes: [NSAttributedString.Key.foregroundColor:UIColor(hexString: "504d4d")])
         default: return NSAttributedString(string: "--\(print(" Undefined/unrecognised picker tag for title"))")
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch pickerView.tag {
-        case 3:
+        switch pickerView {
+        case picker1:
             investmentLabelNumber = String(whichInvestmentPicker[row])
             pickedInvestmentNumber = whichInvestmentPicker[row]
-        case 4://Changing the numbers in the left picker depening on whether the user selects weeks or months
+        case picker2://Changing the numbers in the left picker depening on whether the user selects weeks or months
             if Constants.pickerComponent2[row] == "Weeks" {
                 whichInvestmentPicker = Constants.pickerWeeksNumbers
                 pickerView.reloadAllComponents()
@@ -315,10 +332,10 @@ extension ForecasterViewController: UIPickerViewDataSource, UIPickerViewDelegate
                 pickedInvestmentNumber = 1
                 investmentLabelDate = "Months"
             }
-        case 5:
+        case picker3:
             withdrawalLabelNumber = String(whichWithdrawalPicker[row])
             pickedWithdrawalNumber = whichWithdrawalPicker[row]
-        case 6:
+        case picker4:
             if Constants.pickerComponent2[row] == "Weeks" {
                 whichWithdrawalPicker = Constants.pickerWeeksNumbers
                 pickerView.reloadAllComponents()
@@ -369,7 +386,8 @@ extension ForecasterViewController: UITextFieldDelegate {
         if textField == investmentAmountTextField {
             if let text = investmentAmountTextField.text {
                 textField.text = Constants.convertStringToFormattedString(input: text).stringValue
-                pickedInvestmentNumber = Constants.convertStringToFormattedString(input: text).integerValue
+                pickedInvestmentAmount = Constants.convertStringToFormattedString(input: text).integerValue
+                print(pickedInvestmentAmount)
                 
                 return true
             } else {
@@ -380,7 +398,7 @@ extension ForecasterViewController: UITextFieldDelegate {
         } else if textField == withdrawalAmountTextField {
             if let text = withdrawalAmountTextField.text {
                 textField.text = Constants.convertStringToFormattedString(input: text).stringValue
-                pickedWithdrawalNumber = Constants.convertStringToFormattedString(input: text).integerValue
+                pickedWithdrawalAmount = Constants.convertStringToFormattedString(input: text).integerValue
                 
                 return true
             } else {
