@@ -5,5 +5,6 @@ target 'Investments' do
   use_frameworks!
 
   pod 'ChameleonFramework'
+  pod 'RealmSwift'
 
 end

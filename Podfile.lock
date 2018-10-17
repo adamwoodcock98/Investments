@@ -2,17 +2,27 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
+  - Realm (3.10.0):
+    - Realm/Headers (= 3.10.0)
+  - Realm/Headers (3.10.0)
+  - RealmSwift (3.10.0):
+    - Realm (= 3.10.0)
 
 DEPENDENCIES:
   - ChameleonFramework
+  - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ChameleonFramework
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Realm: 85ab9e4f779d66f6e9ffeb118dc25b7f130c96ac
+  RealmSwift: 69121c8b86d0ae005fb779efdb10e606732e1c74
 
-PODFILE CHECKSUM: 65e1c9049a7bc24387986fbdbc6849a9187ca74f
+PODFILE CHECKSUM: 13188f58313f8a5263886e4bca456c77602901e0
 
 COCOAPODS: 1.5.3

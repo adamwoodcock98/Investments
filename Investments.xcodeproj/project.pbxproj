@@ -47,6 +47,10 @@
 		4E95E599216B5DF100F8933A /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E598216B5DF100F8933A /* ResultsViewController.swift */; };
 		4E95E59B216B5EC200F8933A /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E59A216B5EC200F8933A /* PickerView.swift */; };
 		4E95E59D216E085C00F8933A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E59C216E085C00F8933A /* Constants.swift */; };
+		4E95E5A321773BFF00F8933A /* InvestmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5A221773BFF00F8933A /* InvestmentsViewController.swift */; };
+		4E95E5A921773DF900F8933A /* Investments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5A821773DF900F8933A /* Investments.swift */; };
+		4E95E5AD21776EFC00F8933A /* InvestmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5AB21776EFC00F8933A /* InvestmentsCell.swift */; };
+		4E95E5AE21776EFC00F8933A /* InvestmentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E5AC21776EFC00F8933A /* InvestmentsCell.xib */; };
 		A0CF204C5C3C29CBF13D0C8C /* Pods_Investments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +98,10 @@
 		4E95E598216B5DF100F8933A /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		4E95E59A216B5EC200F8933A /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		4E95E59C216E085C00F8933A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4E95E5A221773BFF00F8933A /* InvestmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentsViewController.swift; sourceTree = "<group>"; };
+		4E95E5A821773DF900F8933A /* Investments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Investments.swift; sourceTree = "<group>"; };
+		4E95E5AB21776EFC00F8933A /* InvestmentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentsCell.swift; sourceTree = "<group>"; };
+		4E95E5AC21776EFC00F8933A /* InvestmentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestmentsCell.xib; sourceTree = "<group>"; };
 		705A31041BFCF14EBD4243FE /* Pods-Investments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investments/Pods-Investments.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -148,16 +156,11 @@
 		4E95E5442167732100F8933A /* Investments */ = {
 			isa = PBXGroup;
 			children = (
-				4E95E5452167732100F8933A /* AppDelegate.swift */,
-				4E95E5472167732100F8933A /* ForecasterViewController.swift */,
-				4E95E598216B5DF100F8933A /* ResultsViewController.swift */,
-				4E95E5492167732100F8933A /* Main.storyboard */,
-				4E95E54C2167732800F8933A /* Assets.xcassets */,
-				4E95E54E2167732800F8933A /* LaunchScreen.storyboard */,
-				4E95E55721678C0300F8933A /* Fonts */,
+				4E95E5A521773C3300F8933A /* Views */,
+				4E95E5A421773C1A00F8933A /* Controllers */,
+				4E95E5AA2177401400F8933A /* Model */,
+				4E95E5A621773C5500F8933A /* Supporting Files */,
 				4E95E5512167732800F8933A /* Info.plist */,
-				4E95E59A216B5EC200F8933A /* PickerView.swift */,
-				4E95E59C216E085C00F8933A /* Constants.swift */,
 			);
 			path = Investments;
 			sourceTree = "<group>";
@@ -199,6 +202,55 @@
 				4E95E56D21678C1900F8933A /* SourceSansPro-SemiBoldItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4E95E5A421773C1A00F8933A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E5452167732100F8933A /* AppDelegate.swift */,
+				4E95E5472167732100F8933A /* ForecasterViewController.swift */,
+				4E95E598216B5DF100F8933A /* ResultsViewController.swift */,
+				4E95E5A221773BFF00F8933A /* InvestmentsViewController.swift */,
+				4E95E5A721773C6F00F8933A /* Custom Cells */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4E95E5A521773C3300F8933A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E5492167732100F8933A /* Main.storyboard */,
+				4E95E54E2167732800F8933A /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4E95E5A621773C5500F8933A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E59A216B5EC200F8933A /* PickerView.swift */,
+				4E95E59C216E085C00F8933A /* Constants.swift */,
+				4E95E54C2167732800F8933A /* Assets.xcassets */,
+				4E95E55721678C0300F8933A /* Fonts */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4E95E5A721773C6F00F8933A /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E5AB21776EFC00F8933A /* InvestmentsCell.swift */,
+				4E95E5AC21776EFC00F8933A /* InvestmentsCell.xib */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		4E95E5AA2177401400F8933A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E95E5A821773DF900F8933A /* Investments.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +322,7 @@
 				4E95E58C21679BA200F8933A /* SourceSansPro-Black.ttf in Resources */,
 				4E95E58A21679BA200F8933A /* Fort Foundry - RiftSoft-Medium.otf in Resources */,
 				4E95E57E21679BA200F8933A /* Fort Foundry - Rift Soft Demi Italic.otf in Resources */,
+				4E95E5AE21776EFC00F8933A /* InvestmentsCell.xib in Resources */,
 				4E95E59021679BA200F8933A /* SourceSansPro-ExtraLight.ttf in Resources */,
 				4E95E58921679BA200F8933A /* Fort Foundry - RiftSoft-Light.otf in Resources */,
 				4E95E59421679BA200F8933A /* SourceSansPro-LightItalic.ttf in Resources */,
@@ -328,10 +381,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Investments/Pods-Investments-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -346,7 +403,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E95E59D216E085C00F8933A /* Constants.swift in Sources */,
+				4E95E5A321773BFF00F8933A /* InvestmentsViewController.swift in Sources */,
 				4E95E59B216B5EC200F8933A /* PickerView.swift in Sources */,
+				4E95E5AD21776EFC00F8933A /* InvestmentsCell.swift in Sources */,
+				4E95E5A921773DF900F8933A /* Investments.swift in Sources */,
 				4E95E5482167732100F8933A /* ForecasterViewController.swift in Sources */,
 				4E95E5462167732100F8933A /* AppDelegate.swift in Sources */,
 				4E95E599216B5DF100F8933A /* ResultsViewController.swift in Sources */,

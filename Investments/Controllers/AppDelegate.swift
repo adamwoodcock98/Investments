@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          UITabBar.appearance().tintColor = UIColor(hexString: "f5b316")
         
         print("launched successfully")
+        
+        let realm = try! Realm()
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+    
         
         return true
     }
