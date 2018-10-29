@@ -12,7 +12,8 @@ import RealmSwift
 
 class Investments : Object {
     
-    @objc dynamic var name: String = "Untitled"
+    @objc dynamic var id : String!
+    @objc dynamic var name : String = "Untitled"
     @objc dynamic var dateStarted : Date?
     @objc dynamic var initialInvestment : Double = 0.0
     @objc dynamic var runningTotal : Double = 0.0

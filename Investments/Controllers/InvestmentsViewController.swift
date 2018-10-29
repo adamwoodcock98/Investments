@@ -77,6 +77,7 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Use indexpath.section instead of indexpath.row
+        
     }
     //MARK: - TableView Configuration Function
     func configureTable() {
@@ -95,6 +96,14 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
         investmentArray = realm.objects(Investments.self).sorted(byKeyPath: "dateStarted", ascending: true)
         tableView.reloadData()
     }
+    
+    //MARK: - IBActions
+    @IBAction func newInvestmentTapped(_ sender: Any) {
+        performSegue(withIdentifier: "goToNewInvestment", sender: self)
+    }
+    
+    //MARK: - Segue Preparations
+    
 
 }
 
