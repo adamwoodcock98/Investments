@@ -17,8 +17,9 @@ class Constants : NSObject {
     static let pickerComponent2 = ["Weeks", "Months"]
     
     //Function to convert TextField data to currency, also returning an integer value to pass forward to the results controller
-    static func convertStringToFormattedString(input: String) -> (integerValue: Int, stringValue: String) {
+    static func convertStringToFormattedString(input: String) -> (integerValue: Int,doubleValue : Double, stringValue: String) {
         let integer = Int(input) ?? 0
+        let double = Double(input) ?? 0
         let number = NSNumber(value: integer)
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -26,7 +27,7 @@ class Constants : NSObject {
         formatter.generatesDecimalNumbers = false
         
         
-        return (integer, "£\(formatter.string(from: number)!)")
+        return (integer, double, "£\(formatter.string(from: number)!)")
     }
     
     
@@ -201,4 +202,96 @@ extension UITextField {
     }
 }
 
+extension UITextField {
+    func autoMoveToNextFieldStart(textField:UITextField, string: String) ->Bool {
+        
+        //Check if textField has two chacraters
+        if textField.text?.count == 1  && string.count > 0 {
+            let nextTag = textField.tag + 1;
+            // get next responder
+            var nextResponder = textField.superview?.viewWithTag(nextTag);
+            if nextResponder == nil {
+                nextResponder = textField.superview?.viewWithTag(1);
+            }
+            
+            textField.text = textField.text! + string;
+            //write here your last textfield tag
+            if textField.tag == 3 {
+                //Dissmiss keyboard on last entry
+                textField.resignFirstResponder()
+            }
+            else {
+                ///Appear keyboard
+                nextResponder?.becomeFirstResponder();
+            }
+            return false;
+        } else if textField.text?.count == 1  && string.count == 0 {// on deleteing value from Textfield
+            
+            let previousTag = textField.tag - 1;
+            // get prev responder
+            var previousResponder = textField.superview?.viewWithTag(previousTag);
+            if previousResponder == nil {
+                previousResponder = textField.superview?.viewWithTag(1);
+            }
+            textField.text = "";
+            previousResponder?.becomeFirstResponder();
+            return false
+        }
+        return true
+        
+    }
+    
+    func autoMoveToNextFieldEnd(textField:UITextField, string: String) ->Bool {
+        
+        //Check if textField has two chacraters
+        if textField.text?.count == 1  && string.count > 0 {
+            let nextTag = textField.tag + 1;
+            // get next responder
+            var nextResponder = textField.superview?.viewWithTag(nextTag);
+            if nextResponder == nil {
+                nextResponder = textField.superview?.viewWithTag(1);
+            }
+            
+            textField.text = textField.text! + string;
+            //write here your last textfield tag
+            if textField.tag == 6 {
+                //Dissmiss keyboard on last entry
+                textField.resignFirstResponder()
+            }
+            else {
+                ///Appear keyboard
+                nextResponder?.becomeFirstResponder();
+            }
+            return false;
+        } else if textField.text?.count == 1  && string.count == 0 {// on deleteing value from Textfield
+            
+            let previousTag = textField.tag - 1;
+            // get prev responder
+            var previousResponder = textField.superview?.viewWithTag(previousTag);
+            if previousResponder == nil {
+                previousResponder = textField.superview?.viewWithTag(1);
+            }
+            textField.text = "";
+            previousResponder?.becomeFirstResponder();
+            return false
+        }
+        return true
+        
+    }
+    
+}
+
+extension String {
+    var isNumeric : Bool {
+        guard self.count > 0 else {return false}
+        let nums : Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        return Set(self).isSubset(of: nums)
+    }
+    
+    var isDecimal : Bool {
+        guard self.count > 0 else {return false}
+        let nums : Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", ","]
+        return Set(self).isSubset(of: nums)
+    }
+}
 
