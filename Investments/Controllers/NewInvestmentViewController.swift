@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import RealmSwift
 
 class NewInvestmentViewController: UIViewController {
     
@@ -50,6 +51,8 @@ class NewInvestmentViewController: UIViewController {
     @IBOutlet weak var rateValidationLabel: UILabel!
     
     let yellow = "F5B316"
+    let realm = try! Realm()
+    let investmentID : String = UUID().uuidString
     
     var interestRateIsVariable : Bool!
     var amountViewHeight : CGFloat = 120
@@ -67,6 +70,9 @@ class NewInvestmentViewController: UIViewController {
     var validRate = 0
     var validAmount = 0
     var fieldsToVerify = 6
+    var endDateIsValid = false
+    var pickedInterestRate : Double = 0.0
+    
     
     var pickedInvestmentAmount : Double = 0
     
@@ -146,6 +152,8 @@ class NewInvestmentViewController: UIViewController {
         amountTextField.delegate = self
         finishButtonOutlet.isEnabled = false
         validateAll()
+        navigationItem.hidesBackButton = true
+        navigationItem.backBarButtonItem!.title = "Investments"
         
         
     }
@@ -218,6 +226,36 @@ class NewInvestmentViewController: UIViewController {
             startValidationLabel.text = "Enter valid YY"
             startValidationLabel.textColor = UIColor.flatWatermelon()
             return false
+        }
+    }
+    
+    func validateEndDate() {
+        var endDDIsValid = false
+        var endMMIsValid = false
+        var endYYIsValid = false
+        
+        if endDDTextField.text!.count == 2 && endDDTextField.text?.isNumeric == true {
+            endDDIsValid = true
+        } else {
+            endDDIsValid = false
+        }
+        
+        if endMMTextField.text!.count == 2 && endMMTextField.text?.isNumeric == true {
+            endMMIsValid = true
+        } else {
+            endMMIsValid = false
+        }
+        
+        if endYYTextField.text!.count == 2 && endYYTextField.text?.isNumeric == true {
+            endYYIsValid = true
+        } else {
+            endYYIsValid = false
+        }
+        
+        if endDDIsValid == true && endMMIsValid == true && endYYIsValid == true {
+            endDateIsValid = true
+        } else {
+            endDateIsValid = false
         }
     }
     
@@ -301,6 +339,7 @@ class NewInvestmentViewController: UIViewController {
             finishButtonOutlet.setTitle("\(verifiedFields) FIELDS REMAINING", for: .disabled)
             finishButtonOutlet.setTitleColor(UIColor(hexString: "B7B7B7"), for: .disabled)
             finishButtonOutlet.layer.borderColor = UIColor(hexString: "504d4d")?.cgColor
+            finishButtonOutlet.backgroundColor = UIColor.clear
         } else {
             finishButtonOutlet.isEnabled = true
             finishButtonOutlet.setTitle("SAVE", for: .normal)
@@ -308,6 +347,12 @@ class NewInvestmentViewController: UIViewController {
             finishButtonOutlet.setTitleColor(UIColor.white, for: .normal)
             finishButtonOutlet.backgroundColor = UIColor(hexString: yellow)
         }
+        
+    }
+    
+    //MARK: - Segue Preparations
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
     
@@ -330,9 +375,74 @@ class NewInvestmentViewController: UIViewController {
     
     //When data is valid, tap finish to save the investment as new Realm object and segue to Investment Look.
     @IBAction func finishTapped(_ sender: Any) {
+        
+        let newInvestment = Investments()
+        
+        //Setting the id as a UUID.
+        newInvestment.id = investmentID
+        
+        
+        //Setting the title as the user defined title
+        newInvestment.title = investmentTitleTextField.text
+        
+        //If the description is not blank, save this.
+        if let text = descriptionTextField.text {
+            newInvestment.investmentDescription = text
+        } else {
+            newInvestment.investmentDescription = nil
+        }
+        
+        //Setting the start date
+        newInvestment.dayStarted = Int(startDDTextField.text!)!
+        newInvestment.monthStarted = Int(startMMTextField.text!)!
+        newInvestment.yearStarted = Int(startYYTextField.text!)!
+        
+        //Setting the end date (if present):
+        if endDateIsValid == true {
+            newInvestment.dayEnded.value = Int(endDDTextField.text!)!
+            newInvestment.monthEnded.value = Int(endMMTextField.text!)!
+            newInvestment.yearEnded.value = Int(endYYTextField.text!)!
+        }
+        
+        //Setting whether the interest isVariable
+        if interestRateIsVariable == true {
+            newInvestment.isInterestVariable = true
+        } else {
+            newInvestment.isInterestVariable = false
+            newInvestment.interestRate.value = pickedInterestRate
+            newInvestment.interestFrequency = frequencyButtonOutlet.currentTitle!
+        }
+        
+        //Setting if there will be withdrawals
+        if withdrawalButtonOutlet.currentTitle == "YES" {
+            newInvestment.withdrawalsAvailable = true
+        } else {
+            newInvestment.withdrawalsAvailable = false
+        }
+        
+        //Setting the amount
+        newInvestment.initialInvestment = pickedInvestmentAmount
+        
+        //Saving the object to Realm
+        do {
+            try realm.write {
+                realm.add(newInvestment)
+            }
+        } catch {
+            print("error saving object to realm")
+            
+            let alert = UIAlertController(title: "Error", message: "There has been an error saving your investment, please close the app and try again", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
-    
-    
     
     @IBAction func frequencyTypeTapped(_ sender: Any) {
         view.endEditing(true)
@@ -405,31 +515,17 @@ extension NewInvestmentViewController : UITextViewDelegate, UITextFieldDelegate 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField.tag {
         case 0:
-            textField.text = ""
+            if textField.text == "Enter a valid title" {
+                textField.text = ""
+            }
             textField.textColor = UIColor(hexString: "E7E5E5")
             textField.layer.borderColor = UIColor(hexString: yellow)?.cgColor
-        case 1:
+        case 1, 2, 3:
             textField.text = ""
             startValidationLabel.text = ""
             startValidationLabel.textColor = UIColor(hexString: "B7B7B7")
             raiseView()
-        case 2:
-            textField.text = ""
-            startValidationLabel.text = ""
-            startValidationLabel.textColor = UIColor(hexString: "B7B7B7")
-            raiseView()
-        case 3:
-            textField.text = ""
-            startValidationLabel.text = ""
-            startValidationLabel.textColor = UIColor(hexString: "B7B7B7")
-            raiseView()
-        case 4:
-            textField.text = ""
-            raiseView()
-        case 5:
-            textField.text = ""
-            raiseView()
-        case 6:
+        case 4, 5, 6:
             textField.text = ""
             raiseView()
         case 7:
@@ -469,8 +565,12 @@ extension NewInvestmentViewController : UITextViewDelegate, UITextFieldDelegate 
             } else {
                 return false
             }
+        case 4, 5, 6:
+            validateEndDate()
+            return true
         case 7:
             if textField.text!.isNumeric {
+                pickedInterestRate = Double(textField.text!)!
                 textField.text = textField.text! + "%"
                 rateValidationLabel.text = ""
                 validateRate()
@@ -521,10 +621,10 @@ extension NewInvestmentViewController : UITextViewDelegate, UITextFieldDelegate 
         case 1:
             validateAll()
             startMMTextField.becomeFirstResponder()
-        case 2:
+        case 2, 3:
             validateAll()
-        case 3:
-            validateAll()
+        case 4, 5, 6:
+            validateEndDate()
         default:
             textField.resignFirstResponder()
             
@@ -550,6 +650,8 @@ extension NewInvestmentViewController : UITextViewDelegate, UITextFieldDelegate 
         case 3:
             startValidationLabel.text = ""
             startValidationLabel.textColor = UIColor(hexString: "B7B7B7")
+        case 4, 5, 6:
+            validateEndDate()
         case 7:
             validateRate()
         default: return
@@ -565,4 +667,4 @@ extension NewInvestmentViewController : UITextViewDelegate, UITextFieldDelegate 
     }
 }
 
-//TODO: - Validate amount text field to display currency. Fields remaining/finish button.
+//TODO: - Use Realm notifications to notify the Investments view controller that a new investment has been added to the database and to in turn reload the tableview data.

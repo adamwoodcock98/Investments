@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E4DCBD4218B3E0C0026531E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DCBD3218B3E0C0026531E /* README.md */; };
+		4E4DCBD6218C6B720026531E /* InvestmentLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DCBD5218C6B720026531E /* InvestmentLookViewController.swift */; };
 		4E95E5462167732100F8933A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5452167732100F8933A /* AppDelegate.swift */; };
 		4E95E5482167732100F8933A /* ForecasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5472167732100F8933A /* ForecasterViewController.swift */; };
 		4E95E54B2167732100F8933A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E5492167732100F8933A /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		3A910D1F1BC445417055D5AB /* Pods-Investments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Investments/Pods-Investments.release.xcconfig"; sourceTree = "<group>"; };
 		4E4DCBD3218B3E0C0026531E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4E4DCBD5218C6B720026531E /* InvestmentLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentLookViewController.swift; sourceTree = "<group>"; };
 		4E95E5422167732100F8933A /* Investments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Investments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E95E5452167732100F8933A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E95E5472167732100F8933A /* ForecasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecasterViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				4E95E598216B5DF100F8933A /* ResultsViewController.swift */,
 				4E95E5A221773BFF00F8933A /* InvestmentsViewController.swift */,
 				4EF9DDB12187215400C4D7E8 /* NewInvestmentViewController.swift */,
+				4E4DCBD5218C6B720026531E /* InvestmentLookViewController.swift */,
 				4E95E5A721773C6F00F8933A /* Custom Cells */,
 			);
 			path = Controllers;
@@ -413,6 +416,7 @@
 				4E95E5A321773BFF00F8933A /* InvestmentsViewController.swift in Sources */,
 				4E95E59B216B5EC200F8933A /* PickerView.swift in Sources */,
 				4E95E5AD21776EFC00F8933A /* InvestmentsCell.swift in Sources */,
+				4E4DCBD6218C6B720026531E /* InvestmentLookViewController.swift in Sources */,
 				4E95E5A921773DF900F8933A /* Investments.swift in Sources */,
 				4E95E5482167732100F8933A /* ForecasterViewController.swift in Sources */,
 				4E95E5462167732100F8933A /* AppDelegate.swift in Sources */,

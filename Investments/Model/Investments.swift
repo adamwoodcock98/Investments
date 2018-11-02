@@ -13,13 +13,27 @@ import RealmSwift
 class Investments : Object {
     
     @objc dynamic var id : String!
-    @objc dynamic var name : String = "Untitled"
-    @objc dynamic var dateStarted : Date?
+    @objc dynamic var title : String!
+    @objc dynamic var investmentDescription : String?
+    @objc dynamic var dayStarted : Int = 0
+    @objc dynamic var monthStarted : Int = 0
+    @objc dynamic var yearStarted : Int = 0
+    let dayEnded = RealmOptional<Int>()
+    let monthEnded = RealmOptional<Int>()
+    let yearEnded = RealmOptional<Int>()
+    @objc dynamic var isInterestVariable : Bool = false
+    let interestRate = RealmOptional<Double>()
+    @objc dynamic var interestFrequency : String?
     @objc dynamic var initialInvestment : Double = 0.0
+    @objc dynamic var withdrawalsAvailable : Bool = true
     @objc dynamic var runningTotal : Double = 0.0
     var gains = List<Gains>()
     @objc dynamic var mostRecentGain : Double = 0.0
     var withdrawals = List<Withdrawals>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
 }
 

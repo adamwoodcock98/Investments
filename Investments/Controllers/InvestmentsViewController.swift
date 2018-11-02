@@ -17,7 +17,17 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     let cellSpacing : CGFloat = 5.0
     
     var investmentArray : Results<Investments>?
-
+    var selectedInvestmentID : String = ""
+    var isNewInvestment : Bool? {
+        didSet {
+            tableView.reloadData()
+            isNewInvestment = nil
+            print("Yes! This has a new investment")
+        }
+    }
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +40,13 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
         //Functions
         loadInvestments()
         
+        //Hide Back Button
+        self.navigationItem.hidesBackButton = true
+        
     }
+    
+    //MARK: - Functions
+    
     
     //MARK: - TableView Datasource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,7 +55,7 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
         if let item = investmentArray?[indexPath.section] {
             let totalAsString = "\(item.runningTotal)"
             let convertedTotal = Constants.convertStringToFormattedString(input: totalAsString)
-            cell.title.text = item.name
+            cell.title.text = item.title
             cell.percentChange.text = "\(item.mostRecentGain)%"
             cell.price.text = convertedTotal.stringValue
         } else {
@@ -78,7 +94,10 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Use indexpath.section instead of indexpath.row
         
+        selectedInvestmentID = investmentArray![indexPath.section].id
+        performSegue(withIdentifier: "goToNewInvestmentLook", sender: self)
     }
+    
     //MARK: - TableView Configuration Function
     func configureTable() {
         tableView.delegate = self
@@ -93,7 +112,7 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     
     //Load all investments and assign them to investmentArray
     func loadInvestments() {
-        investmentArray = realm.objects(Investments.self).sorted(byKeyPath: "dateStarted", ascending: true)
+        investmentArray = realm.objects(Investments.self).sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
     
@@ -103,7 +122,14 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     }
     
     //MARK: - Segue Preparations
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToNewInvestmentLook" {
+            let destination = segue.destination as! InvestmentLookViewController
+            
+            destination.investmentID = selectedInvestmentID
+        }
+    }
+
 
 }
 
