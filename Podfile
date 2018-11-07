@@ -6,5 +6,8 @@ target 'Investments' do
 
   pod 'ChameleonFramework'
   pod 'RealmSwift'
+  pod 'SwipeCellKit'
+  pod 'Charts'
+  pod 'ChartsRealm'
 
 end

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
     
@@ -17,6 +18,7 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     let cellSpacing : CGFloat = 5.0
     
     var investmentArray : Results<Investments>?
+    var notificationToken : NotificationToken? = nil
     var selectedInvestmentID : String = ""
     var isNewInvestment : Bool? {
         didSet {
@@ -42,6 +44,9 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
         
         //Hide Back Button
         self.navigationItem.hidesBackButton = true
+        
+        //Notifications
+        listenForNotifications()
         
     }
     
@@ -110,9 +115,31 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     
     //MARK: - Realm Functions
     
+    //Setup notifications to reload tableview when data is changed.
+    func listenForNotifications() {
+        //Assign an observation for our results to the notification token, registering for changes in the collection.
+        notificationToken = investmentArray?.observe({ (changes: RealmCollectionChange) in
+            //Switch from the different results from the changes
+            switch changes {
+            case .initial:
+                self.tableView.reloadData()
+            case .update:
+                self.tableView.reloadData()
+            case .error(let error):
+                print("\(error)")
+            }
+        })
+    }
+    
     //Load all investments and assign them to investmentArray
     func loadInvestments() {
         investmentArray = realm.objects(Investments.self).sorted(byKeyPath: "title", ascending: true)
+        
+        if investmentArray!.count <= 3 {
+            tableView.isScrollEnabled = false
+        } else {
+            tableView.isScrollEnabled = true
+        }
         tableView.reloadData()
     }
     

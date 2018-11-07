@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceSansPro-Light.ttf">
+            <string>SourceSansPro-Light</string>
+        </array>
+        <array key="SourceSansPro-SemiBold.ttf">
+            <string>SourceSansPro-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gains" id="KGk-i7-Jjw" customClass="GainsCell" customModule="Investments" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-Gp-yKd">
+                        <rect key="frame" x="0.0" y="0.0" width="213.5" height="43.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvy-wN-krm">
+                                <rect key="frame" x="0.0" y="0.0" width="213.5" height="29"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="22"/>
+                                <color key="textColor" red="0.90588235289999997" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24th December 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2u-T0-EpB">
+                                <rect key="frame" x="0.0" y="29" width="213.5" height="14.5"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-Light" family="Source Sans Pro" pointSize="15"/>
+                                <color key="textColor" red="0.90588235289999997" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="n2u-T0-EpB" firstAttribute="top" secondItem="kvy-wN-krm" secondAttribute="bottom" id="4EB-wW-auA"/>
+                            <constraint firstItem="kvy-wN-krm" firstAttribute="leading" secondItem="GcO-Gp-yKd" secondAttribute="leading" id="80m-Oe-gRx"/>
+                            <constraint firstAttribute="trailing" secondItem="kvy-wN-krm" secondAttribute="trailing" id="HFN-Zn-8tM"/>
+                            <constraint firstItem="n2u-T0-EpB" firstAttribute="top" secondItem="kvy-wN-krm" secondAttribute="bottom" id="IJE-J3-QCL"/>
+                            <constraint firstItem="n2u-T0-EpB" firstAttribute="leading" secondItem="GcO-Gp-yKd" secondAttribute="leading" id="Izp-FA-qiU"/>
+                            <constraint firstItem="n2u-T0-EpB" firstAttribute="height" secondItem="kvy-wN-krm" secondAttribute="height" multiplier="1:2" id="LSS-v1-8UM"/>
+                            <constraint firstAttribute="bottom" secondItem="n2u-T0-EpB" secondAttribute="bottom" id="RvW-NL-ihu"/>
+                            <constraint firstAttribute="trailing" secondItem="n2u-T0-EpB" secondAttribute="trailing" id="sJg-Dn-WrZ"/>
+                            <constraint firstItem="kvy-wN-krm" firstAttribute="top" secondItem="GcO-Gp-yKd" secondAttribute="top" id="x0c-8r-oek"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0D-O2-8Mq">
+                        <rect key="frame" x="213.5" y="0.0" width="106.5" height="43.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.323%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTi-sP-PoO">
+                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="43.5"/>
+                                <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="28"/>
+                                <color key="textColor" red="0.90588235289999997" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="eTi-sP-PoO" secondAttribute="bottom" id="4sb-yh-FFj"/>
+                            <constraint firstAttribute="trailing" secondItem="eTi-sP-PoO" secondAttribute="trailing" id="Si7-Q5-c81"/>
+                            <constraint firstItem="eTi-sP-PoO" firstAttribute="top" secondItem="G0D-O2-8Mq" secondAttribute="top" id="cCy-LD-lpE"/>
+                            <constraint firstItem="eTi-sP-PoO" firstAttribute="leading" secondItem="G0D-O2-8Mq" secondAttribute="leading" id="pEa-Yb-x2Y"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="G0D-O2-8Mq" secondAttribute="trailing" id="HUo-U9-6u6"/>
+                    <constraint firstItem="G0D-O2-8Mq" firstAttribute="width" secondItem="GcO-Gp-yKd" secondAttribute="width" multiplier="1:2" id="Lhm-8U-YQ6"/>
+                    <constraint firstAttribute="bottom" secondItem="GcO-Gp-yKd" secondAttribute="bottom" id="V3T-3T-Qim"/>
+                    <constraint firstItem="G0D-O2-8Mq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Wih-5G-bVw"/>
+                    <constraint firstItem="G0D-O2-8Mq" firstAttribute="leading" secondItem="GcO-Gp-yKd" secondAttribute="trailing" id="dmI-zH-O9F"/>
+                    <constraint firstItem="G0D-O2-8Mq" firstAttribute="leading" secondItem="GcO-Gp-yKd" secondAttribute="trailing" id="giI-h1-V4Z"/>
+                    <constraint firstItem="GcO-Gp-yKd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="oz4-G5-pmF"/>
+                    <constraint firstItem="GcO-Gp-yKd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sI3-nx-SFb"/>
+                    <constraint firstAttribute="bottom" secondItem="G0D-O2-8Mq" secondAttribute="bottom" id="umo-gh-U4x"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="date" destination="n2u-T0-EpB" id="pZW-BM-AOH"/>
+                <outlet property="percentage" destination="eTi-sP-PoO" id="n0i-NJ-dgp"/>
+                <outlet property="title" destination="kvy-wN-krm" id="Jz7-3E-Tvo"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="153.82308845577214"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -30,8 +30,25 @@ class Constants : NSObject {
         return (integer, double, "£\(formatter.string(from: number)!)")
     }
     
+    static func formatDateToLongDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        
+        formatter.locale = Locale.current
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        
+        return formatter.string(from: date)
+    }
     
-    
+    static func formatDateToShortDate(date: Date) -> String {
+        let formatter = DateFormatter()
+        
+        formatter.locale = Locale.current
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        
+        return formatter.string(from: date)
+    }
     
 }
 
@@ -295,3 +312,8 @@ extension String {
     }
 }
 
+extension Double {
+    var rounded2DecimalPlaces : Double {
+        return ((self * 100).rounded()) / 100
+    }
+}

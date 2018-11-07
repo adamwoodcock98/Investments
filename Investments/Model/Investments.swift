@@ -27,9 +27,10 @@ class Investments : Object {
     @objc dynamic var initialInvestment : Double = 0.0
     @objc dynamic var withdrawalsAvailable : Bool = true
     @objc dynamic var runningTotal : Double = 0.0
-    var gains = List<Gains>()
     @objc dynamic var mostRecentGain : Double = 0.0
-    var withdrawals = List<Withdrawals>()
+    let gains = List<Gains>()
+    let withdrawals = List<Withdrawals>()
+    let deposits = List<Deposits>()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -39,16 +40,25 @@ class Investments : Object {
 
 class Gains : Object {
     
-    @objc dynamic var timestamp : Date?
+    @objc dynamic var timestamp : Date!
     @objc dynamic var percentage : Double = 0.0
+    @objc dynamic var difference : Double = 0.0
     let parent = LinkingObjects(fromType: Investments.self, property: "gains")
     
 }
 
 class Withdrawals : Object {
     
-    @objc dynamic var timestamp : Date?
+    @objc dynamic var timestamp : Date!
     @objc dynamic var amount : Double = 0.0
+    @objc dynamic var difference : Double = 0.0
     let parent = LinkingObjects(fromType: Investments.self, property: "withdrawals")
     
+}
+
+class Deposits : Object {
+    
+    @objc dynamic var timestamp : Date!
+    @objc dynamic var amount : Double = 0.0
+    let parent = LinkingObjects(fromType: Investments.self, property: "deposits")
 }
