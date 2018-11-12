@@ -102,19 +102,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbL-pC-v7Z" userLabel="View 2">
                                 <rect key="frame" x="10" y="83.999999999999986" width="355" height="210.66666666666663"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charts Coming Soon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npa-Hr-J5a">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="210.66666666666666"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="40"/>
-                                        <color key="textColor" red="0.90588235289999997" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBP-GD-2I3" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="4" y="29.666666666666657" width="347" height="177"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gains Over Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqI-oV-gP3">
+                                        <rect key="frame" x="10" y="0.0" width="345" height="29.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="20"/>
+                                        <color key="textColor" red="0.71764705880000002" green="0.71764705880000002" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="npa-Hr-J5a" secondAttribute="trailing" id="5BN-mR-FS9"/>
-                                    <constraint firstItem="npa-Hr-J5a" firstAttribute="top" secondItem="bbL-pC-v7Z" secondAttribute="top" id="CBE-if-NJR"/>
-                                    <constraint firstAttribute="bottom" secondItem="npa-Hr-J5a" secondAttribute="bottom" id="esn-HY-U31"/>
-                                    <constraint firstItem="npa-Hr-J5a" firstAttribute="leading" secondItem="bbL-pC-v7Z" secondAttribute="leading" id="zx2-HP-DXN"/>
+                                    <constraint firstItem="aqI-oV-gP3" firstAttribute="leading" secondItem="bbL-pC-v7Z" secondAttribute="leading" constant="10" id="Adt-XP-wIB"/>
+                                    <constraint firstAttribute="trailing" secondItem="VBP-GD-2I3" secondAttribute="trailing" constant="4" id="QQb-Ng-SV2"/>
+                                    <constraint firstItem="aqI-oV-gP3" firstAttribute="top" secondItem="bbL-pC-v7Z" secondAttribute="top" id="VZo-ua-jPf"/>
+                                    <constraint firstItem="VBP-GD-2I3" firstAttribute="leading" secondItem="bbL-pC-v7Z" secondAttribute="leading" constant="4" id="WBP-2i-IUi"/>
+                                    <constraint firstAttribute="trailing" secondItem="aqI-oV-gP3" secondAttribute="trailing" id="kxf-V2-FGB"/>
+                                    <constraint firstAttribute="bottom" secondItem="VBP-GD-2I3" secondAttribute="bottom" constant="4" id="mB1-Gw-2g1"/>
+                                    <constraint firstItem="VBP-GD-2I3" firstAttribute="top" secondItem="aqI-oV-gP3" secondAttribute="bottom" id="st0-of-OOg"/>
+                                    <constraint firstItem="VBP-GD-2I3" firstAttribute="height" secondItem="aqI-oV-gP3" secondAttribute="height" multiplier="6:1" id="t7W-wJ-xFT"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-5r-BNf" userLabel="View 3">
@@ -443,7 +449,7 @@
                     <connections>
                         <outlet property="FAB" destination="QHv-16-SeI" id="Uze-pW-Ff9"/>
                         <outlet property="bigCircleBackgroundView" destination="eNl-lX-Kp9" id="un4-th-qLw"/>
-                        <outlet property="chartBackground" destination="npa-Hr-J5a" id="8n9-tW-5DD"/>
+                        <outlet property="chartView" destination="VBP-GD-2I3" id="R6b-HW-WoC"/>
                         <outlet property="descriptionTextFIeld" destination="5Ru-db-RSc" id="bUz-Wh-dNx"/>
                         <outlet property="editButtonOutlet" destination="Sa1-nm-Yo7" id="H06-qy-dck"/>
                         <outlet property="initialInvestmentTextField" destination="ovt-b1-S0m" id="pRB-nY-TKa"/>
@@ -938,7 +944,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e41-X3-W6P">
                                         <rect key="frame" x="130" y="4" width="235" height="103.33333333333333"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im1-6z-6y8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Investment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im1-6z-6y8">
                                                 <rect key="frame" x="10" y="0.0" width="225" height="31"/>
                                                 <fontDescription key="fontDescription" name="SourceSansPro-SemiBold" family="Source Sans Pro" pointSize="20"/>
                                                 <color key="textColor" red="0.71764705880000002" green="0.71764705880000002" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

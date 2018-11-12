@@ -10,13 +10,14 @@ import UIKit
 import RealmSwift
 import ChameleonFramework
 import SwipeCellKit
+import Charts
 
 class InvestmentLookViewController: UIViewController {
     
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var descriptionTextFIeld: UITextView!
-    @IBOutlet weak var chartBackground: UILabel!
+    @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var investmentValueView: UIView!
     @IBOutlet weak var percentChangeView: UIView!
     @IBOutlet weak var investmentValueLabel: UILabel!
@@ -38,6 +39,8 @@ class InvestmentLookViewController: UIViewController {
     @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var initialInvestmentTextField: UITextField!
     
+    weak var axisFormatDelegate : IAxisValueFormatter?
+    
     let realm = try! Realm()
     let yellow = UIColor(hexString: "F5B316")
     
@@ -48,7 +51,7 @@ class InvestmentLookViewController: UIViewController {
     var currentInvestmentGains : Results<Gains>!
     var currentInvestmentWithdrawals : Results<Withdrawals>!
     var currentInvestmentDeposits : Results<Deposits>!
-    var currentInvestmentCombinedExtras : Results<CombinedExtras>?
+    var currentInvestmentCombinedExtras : Results<CombinedExtras>!
     var investmentID : String!
     var totalInvested : Double!
     var mostRecentGainObject : Gains!
@@ -57,6 +60,8 @@ class InvestmentLookViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        axisFormatDelegate = self
         
         configureRealm()
         configureArithmetic()
@@ -81,6 +86,9 @@ class InvestmentLookViewController: UIViewController {
         //Assigning the currentInvestmentDeposits with deposits matching this investment
         currentInvestmentDeposits = currentInvestment.deposits.sorted(byKeyPath: "timestamp", ascending: true)
         
+        //Assigning the currentInvestmentCombinedObjects with combined objects matching this investment
+        currentInvestmentCombinedExtras = currentInvestment.combinedExtras.sorted(byKeyPath: "timestamp", ascending: true)
+        
         //Set navigation bar back button title
         navigationItem.hidesBackButton = false
     }
@@ -88,11 +96,13 @@ class InvestmentLookViewController: UIViewController {
     //Configure arithmetic to load into the display
     func configureArithmetic() {
         //Calculate running total
+        calculateInvestmentValue()
         //Calculate total invested
         calculateTotalInvested()
-        //Calculate most recent gain
-        let gain = Gains(); gain.percentage = 9.8; gain.timestamp = Date()
-        mostRecentGainObject = gain
+        //Calculate change
+        calculateChange()
+        //Update chart
+        updateChartWithData()
         
         
     }
@@ -107,14 +117,120 @@ class InvestmentLookViewController: UIViewController {
     }
     
     func calculateInvestmentValue() {
+        investmentValueLabel.text = Constants.convertStringToFormattedString(input: "\(currentInvestment.initialInvestment)").stringValue
+        
+        var runningTotal : Double = currentInvestment.initialInvestment
+        for entry in currentInvestmentCombinedExtras {
+            if entry.entryType == "Gain" {
+                runningTotal = runningTotal * (1 + (entry.amountOrPercent / 100))
+            }
+            
+            if entry.entryType == "Withdrawal" {
+                runningTotal = runningTotal - entry.amountOrPercent
+            }
+            
+            if entry.entryType == "Deposit" {
+                runningTotal = runningTotal + entry.amountOrPercent
+            }
+        }
+        runningTotal = runningTotal.rounded2DecimalPlaces
+        investmentValueLabel.text = Constants.convertStringToFormattedString(input: "\(runningTotal)").stringValue
+        
+        do {
+            try realm.write {
+                currentInvestment.runningTotal = runningTotal
+                realm.add(currentInvestment, update: true)
+            }
+        } catch {
+            print(error)
+            print(error)
+            let alert = UIAlertController(title: "Error", message: "There has been an internal error, please close the app and try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func calculateChange() {
+        let increaseOrDecrease = (((currentInvestment.runningTotal - currentInvestment.initialInvestment) / currentInvestment.initialInvestment) * 100).rounded2DecimalPlaces
+        
+        percentChangeLabel.text = "\(increaseOrDecrease)%"
         
     }
     
-    func combineRealmRelationshipDatabases() {
+    func updateChartWithData() {
+        var gainDataEntries = [ChartDataEntry]()
+        for (_ , element) in currentInvestmentGains.enumerated() {
+            let timeInterval : TimeInterval = element.timestamp.timeIntervalSince1970
+            
+            let dataEntry = ChartDataEntry(x: Double(timeInterval), y: element.percentage)
+            
+            gainDataEntries.append(dataEntry)
+        }
+        
+        let line1 = LineChartDataSet(values: gainDataEntries, label: "Gains")
+        line1.colors = [yellow!]
+        line1.circleColors = [yellow!]
+        line1.circleHoleColor = yellow!
+        line1.circleRadius = 5
+        line1.valueTextColor = UIColor(hexString: "B7B7B7")
+        line1.valueFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 12), size: 12)
+        
+        
+        
+        
+        let data1 = LineChartData()
+        data1.addDataSet(line1)
+        
+        chartView.data = data1
+        chartView.chartDescription?.text = ""
+        chartView.drawGridBackgroundEnabled = false
+        
+        
+        chartView.backgroundColor = UIColor.darkGray
+        chartView.rightAxis.enabled = false
+        chartView.pinchZoomEnabled = false
+        
+        let xAxis = chartView.xAxis
+        xAxis.valueFormatter = axisFormatDelegate
+        xAxis.labelTextColor = UIColor(hexString: "B7B7B7")
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 10), size: 10)
+        xAxis.xOffset = 0
+        xAxis.axisLineColor = yellow!
+        xAxis.axisLineWidth = 1
+        xAxis.spaceMin = 10
+        xAxis.spaceMax = 10
+        xAxis.drawGridLinesEnabled = true
+        xAxis.gridLineDashLengths = [CGFloat(4)]
+        xAxis.drawAxisLineEnabled = false
+        
+        let yAxis = chartView.leftAxis
+        yAxis.labelPosition = .outsideChart
+        yAxis.labelTextColor = UIColor(hexString: "B7B7B7")
+        yAxis.labelFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 14), size: 14)
+        yAxis.axisLineColor = yellow!
+        yAxis.axisLineWidth = 1
+        yAxis.spaceMin = 10
+        yAxis.spaceMax = 10
+        yAxis.drawGridLinesEnabled = true
+        yAxis.drawAxisLineEnabled = false
+        yAxis.gridLineDashLengths = [CGFloat(4)]
+        yAxis.xOffset = 10
+        
+        
+        let legend = chartView.legend
+        legend.enabled = false
+        legend.xEntrySpace = 0
+        legend.yEntrySpace = 0
+        legend.textColor = UIColor(hexString: "B7B7B7")
+        legend.font = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-Light", size: 14), size: 14)
+        legend.horizontalAlignment = .left
+        legend.verticalAlignment = .bottom
+        
         
     }
-    
-    //Calculate gains
     
     //Configure the UI to display correct values, and design elements.
     func configureUI() {
@@ -148,8 +264,6 @@ class InvestmentLookViewController: UIViewController {
         percentChangeView.layer.borderWidth = 0
         percentChangeView.layer.borderColor = yellow?.cgColor
         percentChangeView.layer.cornerRadius = 8
-        let percentChange = (((currentInvestment.runningTotal - currentInvestment.initialInvestment) / currentInvestment.initialInvestment) * 100).rounded2DecimalPlaces
-        percentChangeLabel.text = "\(percentChange)%"
         //Configure total investment
         totalInvestedView.layer.borderWidth = 0
         totalInvestedView.layer.borderColor = yellow?.cgColor
@@ -194,46 +308,7 @@ class InvestmentLookViewController: UIViewController {
         initialInvestmentTextField.text = Constants.convertStringToFormattedString(input: "\(currentInvestment.initialInvestment)").stringValue
     }
     
-    func listenForNotifications() {
-        notificationGains = currentInvestmentGains.observe({ (changes: RealmCollectionChange) in
-            switch changes {
-            case .update:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-            case .initial:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-            case .error:
-                print("error")
-            }
-        })
-        
-        notificationWithdrawals = currentInvestmentWithdrawals.observe({ (changes: RealmCollectionChange) in
-            switch changes {
-            case .update:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-            case .initial:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-            case .error:
-                print("error")
-            }
-        })
-        
-        notificationDeposits = currentInvestmentDeposits.observe({ (changes: RealmCollectionChange) in
-            switch changes {
-            case .update:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-            case .initial:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-            case .error:
-                print("error")
-            }
-        })
-    }
+    
     
     func closeFAB() {
         self.bigCircleBackgroundView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
@@ -264,7 +339,54 @@ class InvestmentLookViewController: UIViewController {
             present(alert, animated: true, completion: nil)
         }
     }
-
+    
+    func listenForNotifications() {
+        notificationGains = currentInvestmentGains.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .error:
+                print("error")
+            }
+        })
+        
+        notificationWithdrawals = currentInvestmentWithdrawals.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .error:
+                print("error")
+            }
+        })
+        
+        notificationDeposits = currentInvestmentDeposits.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .error:
+                print("error")
+            }
+        })
+    }
+    
     func deleteRealm(object: Object) {
         do {
             try realm.write {
@@ -278,6 +400,7 @@ class InvestmentLookViewController: UIViewController {
             present(alert, animated: true, completion: nil)
         }
     }
+    
     
     //MARK: Segue Preparations
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -491,10 +614,20 @@ extension InvestmentLookViewController: UITableViewDelegate, UITableViewDataSour
     
 }
 
-//MARK : - TextView Delegate Methods
+//MARK: - TextView Delegate Methods
 extension InvestmentLookViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
         textView.textColor = UIColor(hexString: "E7E5E5")
+    }
+}
+
+//MARK: - Axis Delegate Methods
+extension InvestmentLookViewController : IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yy"
+        
+        return dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
 }

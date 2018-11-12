@@ -423,6 +423,9 @@ class NewInvestmentViewController: UIViewController {
         //Setting the amount
         newInvestment.initialInvestment = pickedInvestmentAmount
         
+        //Setting the running total
+        newInvestment.runningTotal = pickedInvestmentAmount
+        
         //Saving the object to Realm
         do {
             try realm.write {
@@ -666,5 +669,3 @@ extension NewInvestmentViewController : UITextViewDelegate, UITextFieldDelegate 
         return true
     }
 }
-
-//TODO: - Use Realm notifications to notify the Investments view controller that a new investment has been added to the database and to in turn reload the tableview data.

@@ -94,10 +94,11 @@ class PopoverViewController: UIViewController {
 
     }
     
-    func updateRealmGain(object: Gains) {
+    func updateRealmGain(object: Gains, combinedObject: CombinedExtras) {
         do {
             try realm.write {
                 currentInvestment.gains.append(object)
+                currentInvestment.combinedExtras.append(combinedObject)
             }
         } catch {
             print("error saving object to realm")
@@ -112,10 +113,11 @@ class PopoverViewController: UIViewController {
         }
     }
     
-    func updateRealmWithdrawal(object: Withdrawals) {
+    func updateRealmWithdrawal(object: Withdrawals, combinedObject: CombinedExtras) {
         do {
             try realm.write {
                 currentInvestment.withdrawals.append(object)
+                currentInvestment.combinedExtras.append(combinedObject)
             }
         } catch {
             print("error saving object to realm")
@@ -130,10 +132,11 @@ class PopoverViewController: UIViewController {
         }
     }
     
-    func updateRealmDeposit(object: Deposits) {
+    func updateRealmDeposit(object: Deposits, combinedObject: CombinedExtras) {
         do {
             try realm.write {
                 currentInvestment.deposits.append(object)
+                currentInvestment.combinedExtras.append(combinedObject)
             }
         } catch {
             print("error saving object to realm")
@@ -221,17 +224,29 @@ class PopoverViewController: UIViewController {
             let object = Gains()
             object.percentage = selectedAmountOrPercent
             object.timestamp = Constants.convertDDMMYYToFormattedDate(dd: selectedDD, mm: selectedMM, yy: selectedYY)
-            updateRealmGain(object: object)
+            let combinedObject = CombinedExtras()
+            combinedObject.entryType = newEntryType
+            combinedObject.amountOrPercent = selectedAmountOrPercent
+            combinedObject.timestamp = Constants.convertDDMMYYToFormattedDate(dd: selectedDD, mm: selectedMM, yy: selectedYY)
+            updateRealmGain(object: object, combinedObject: combinedObject)
         } else if newEntryType == "Withdrawal" {
             let object = Withdrawals()
             object.amount = selectedAmountOrPercent
             object.timestamp = Constants.convertDDMMYYToFormattedDate(dd: selectedDD, mm: selectedMM, yy: selectedYY)
-            updateRealmWithdrawal(object: object)
+            let combinedObject = CombinedExtras()
+            combinedObject.entryType = newEntryType
+            combinedObject.amountOrPercent = selectedAmountOrPercent
+            combinedObject.timestamp = Constants.convertDDMMYYToFormattedDate(dd: selectedDD, mm: selectedMM, yy: selectedYY)
+            updateRealmWithdrawal(object: object, combinedObject: combinedObject)
         } else if newEntryType == "Deposit" {
             let object = Deposits()
             object.amount = selectedAmountOrPercent
             object.timestamp = Constants.convertDDMMYYToFormattedDate(dd: selectedDD, mm: selectedMM, yy: selectedYY)
-            updateRealmDeposit(object: object)
+            let combinedObject = CombinedExtras()
+            combinedObject.entryType = newEntryType
+            combinedObject.amountOrPercent = selectedAmountOrPercent
+            combinedObject.timestamp = Constants.convertDDMMYYToFormattedDate(dd: selectedDD, mm: selectedMM, yy: selectedYY)
+            updateRealmDeposit(object: object, combinedObject: combinedObject)
         }
         
         let parent = self.presentingViewController
