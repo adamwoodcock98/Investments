@@ -129,6 +129,7 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
                 print("\(error)")
             }
         })
+        
     }
     
     //Load all investments and assign them to investmentArray

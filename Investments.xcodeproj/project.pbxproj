@@ -12,38 +12,11 @@
 		4E09F24D2191A81100E064C1 /* WithdrawalDepositsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09F24B2191A81100E064C1 /* WithdrawalDepositsCell.swift */; };
 		4E09F24E2191A81100E064C1 /* WithdrawalDepositsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E09F24C2191A81100E064C1 /* WithdrawalDepositsCell.xib */; };
 		4E09F2502191C11A00E064C1 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09F24F2191C11A00E064C1 /* FloatingActionButton.swift */; };
-		4E09F2512193028700E064C1 /* Fort Foundry - Rift Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57421678C1A00F8933A /* Fort Foundry - Rift Bold Italic.otf */; };
-		4E09F2522193028700E064C1 /* Fort Foundry - Rift Demi Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55E21678C1800F8933A /* Fort Foundry - Rift Demi Italic.otf */; };
-		4E09F2532193028700E064C1 /* Fort Foundry - Rift Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56C21678C1900F8933A /* Fort Foundry - Rift Italic.otf */; };
-		4E09F2542193028700E064C1 /* Fort Foundry - Rift Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55A21678C1700F8933A /* Fort Foundry - Rift Light Italic.otf */; };
-		4E09F2552193028700E064C1 /* Fort Foundry - Rift Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56821678C1900F8933A /* Fort Foundry - Rift Medium Italic.otf */; };
-		4E09F2562193028700E064C1 /* Fort Foundry - Rift Soft Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56621678C1900F8933A /* Fort Foundry - Rift Soft Bold Italic.otf */; };
-		4E09F2572193028700E064C1 /* Fort Foundry - Rift Soft Demi Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56121678C1800F8933A /* Fort Foundry - Rift Soft Demi Italic.otf */; };
-		4E09F2582193028700E064C1 /* Fort Foundry - Rift Soft Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57221678C1A00F8933A /* Fort Foundry - Rift Soft Italic.otf */; };
-		4E09F2592193028700E064C1 /* Fort Foundry - Rift Soft Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55821678C1700F8933A /* Fort Foundry - Rift Soft Light Italic.otf */; };
-		4E09F25A2193028700E064C1 /* Fort Foundry - Rift Soft Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55B21678C1800F8933A /* Fort Foundry - Rift Soft Medium Italic.otf */; };
-		4E09F25B2193028700E064C1 /* Fort Foundry - Rift-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55921678C1700F8933A /* Fort Foundry - Rift-Bold.otf */; };
-		4E09F25C2193028700E064C1 /* Fort Foundry - Rift-Demi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57721678C1A00F8933A /* Fort Foundry - Rift-Demi.otf */; };
-		4E09F25D2193028700E064C1 /* Fort Foundry - Rift-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56E21678C1900F8933A /* Fort Foundry - Rift-Light.otf */; };
-		4E09F25E2193028700E064C1 /* Fort Foundry - Rift-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56B21678C1900F8933A /* Fort Foundry - Rift-Medium.otf */; };
-		4E09F25F2193028700E064C1 /* Fort Foundry - Rift-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56321678C1800F8933A /* Fort Foundry - Rift-Regular.otf */; };
-		4E09F2602193028700E064C1 /* Fort Foundry - RiftSoft-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56521678C1800F8933A /* Fort Foundry - RiftSoft-Bold.otf */; };
-		4E09F2612193028700E064C1 /* Fort Foundry - RiftSoft-Demi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56421678C1800F8933A /* Fort Foundry - RiftSoft-Demi.otf */; };
-		4E09F2622193028700E064C1 /* Fort Foundry - RiftSoft-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57621678C1A00F8933A /* Fort Foundry - RiftSoft-Light.otf */; };
-		4E09F2632193028700E064C1 /* Fort Foundry - RiftSoft-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57321678C1A00F8933A /* Fort Foundry - RiftSoft-Medium.otf */; };
-		4E09F2642193028700E064C1 /* Fort Foundry - RiftSoft-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57021678C1A00F8933A /* Fort Foundry - RiftSoft-Regular.otf */; };
-		4E09F271219302B400E064C1 /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56F21678C1900F8933A /* SourceSansPro-Black.ttf */; };
-		4E09F272219302B400E064C1 /* SourceSansPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56721678C1900F8933A /* SourceSansPro-BlackItalic.ttf */; };
-		4E09F273219302B400E064C1 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55C21678C1800F8933A /* SourceSansPro-Bold.ttf */; };
-		4E09F274219302B400E064C1 /* SourceSansPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56921678C1900F8933A /* SourceSansPro-BoldItalic.ttf */; };
-		4E09F275219302B400E064C1 /* SourceSansPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55F21678C1800F8933A /* SourceSansPro-ExtraLight.ttf */; };
-		4E09F276219302B400E064C1 /* SourceSansPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56A21678C1900F8933A /* SourceSansPro-ExtraLightItalic.ttf */; };
-		4E09F277219302B400E064C1 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56021678C1800F8933A /* SourceSansPro-Italic.ttf */; };
-		4E09F278219302B400E064C1 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56221678C1800F8933A /* SourceSansPro-Light.ttf */; };
-		4E09F279219302B400E064C1 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57521678C1A00F8933A /* SourceSansPro-LightItalic.ttf */; };
-		4E09F27A219302B400E064C1 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57121678C1A00F8933A /* SourceSansPro-Regular.ttf */; };
-		4E09F27B219302B400E064C1 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55D21678C1800F8933A /* SourceSansPro-SemiBold.ttf */; };
-		4E09F27C219302B400E064C1 /* SourceSansPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56D21678C1900F8933A /* SourceSansPro-SemiBoldItalic.ttf */; };
+		4E09F29E219439EF00E064C1 /* ViewWithDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09F29D219439EF00E064C1 /* ViewWithDesignables.swift */; };
+		4E09F2A021943C4800E064C1 /* PickerWithDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09F29F21943C4800E064C1 /* PickerWithDesignables.swift */; };
+		4E09F2A22194440700E064C1 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09F2A12194440700E064C1 /* PopoverViewController.swift */; };
+		4E09F2A4219445DE00E064C1 /* TextFieldWithDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09F2A3219445DE00E064C1 /* TextFieldWithDesignables.swift */; };
+		4E09F2A6219451B300E064C1 /* ButtonWithDesignables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09F2A5219451B300E064C1 /* ButtonWithDesignables.swift */; };
 		4E4DCBD4218B3E0C0026531E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DCBD3218B3E0C0026531E /* README.md */; };
 		4E4DCBD6218C6B720026531E /* InvestmentLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DCBD5218C6B720026531E /* InvestmentLookViewController.swift */; };
 		4E95E5462167732100F8933A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5452167732100F8933A /* AppDelegate.swift */; };
@@ -58,6 +31,40 @@
 		4E95E5A921773DF900F8933A /* Investments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5A821773DF900F8933A /* Investments.swift */; };
 		4E95E5AD21776EFC00F8933A /* InvestmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E95E5AB21776EFC00F8933A /* InvestmentsCell.swift */; };
 		4E95E5AE21776EFC00F8933A /* InvestmentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E5AC21776EFC00F8933A /* InvestmentsCell.xib */; };
+		4EE4128A21959A4A002C99E4 /* Popover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EE4128921959A49002C99E4 /* Popover.storyboard */; };
+		4EE4128B2195AF2C002C99E4 /* Fort Foundry - Rift Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57421678C1A00F8933A /* Fort Foundry - Rift Bold Italic.otf */; };
+		4EE4128C2195AF2C002C99E4 /* Fort Foundry - Rift Demi Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55E21678C1800F8933A /* Fort Foundry - Rift Demi Italic.otf */; };
+		4EE4128D2195AF2C002C99E4 /* Fort Foundry - Rift Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56C21678C1900F8933A /* Fort Foundry - Rift Italic.otf */; };
+		4EE4128E2195AF2C002C99E4 /* Fort Foundry - Rift Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55A21678C1700F8933A /* Fort Foundry - Rift Light Italic.otf */; };
+		4EE4128F2195AF2C002C99E4 /* Fort Foundry - Rift Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56821678C1900F8933A /* Fort Foundry - Rift Medium Italic.otf */; };
+		4EE412902195AF2C002C99E4 /* Fort Foundry - Rift Soft Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56621678C1900F8933A /* Fort Foundry - Rift Soft Bold Italic.otf */; };
+		4EE412912195AF2C002C99E4 /* Fort Foundry - Rift Soft Demi Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56121678C1800F8933A /* Fort Foundry - Rift Soft Demi Italic.otf */; };
+		4EE412922195AF2C002C99E4 /* Fort Foundry - Rift Soft Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57221678C1A00F8933A /* Fort Foundry - Rift Soft Italic.otf */; };
+		4EE412932195AF2C002C99E4 /* Fort Foundry - Rift Soft Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55821678C1700F8933A /* Fort Foundry - Rift Soft Light Italic.otf */; };
+		4EE412942195AF2C002C99E4 /* Fort Foundry - Rift Soft Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55B21678C1800F8933A /* Fort Foundry - Rift Soft Medium Italic.otf */; };
+		4EE412952195AF2C002C99E4 /* Fort Foundry - Rift-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55921678C1700F8933A /* Fort Foundry - Rift-Bold.otf */; };
+		4EE412962195AF2C002C99E4 /* Fort Foundry - Rift-Demi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57721678C1A00F8933A /* Fort Foundry - Rift-Demi.otf */; };
+		4EE412972195AF2C002C99E4 /* Fort Foundry - Rift-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56E21678C1900F8933A /* Fort Foundry - Rift-Light.otf */; };
+		4EE412982195AF2C002C99E4 /* Fort Foundry - Rift-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56B21678C1900F8933A /* Fort Foundry - Rift-Medium.otf */; };
+		4EE412992195AF2C002C99E4 /* Fort Foundry - Rift-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56321678C1800F8933A /* Fort Foundry - Rift-Regular.otf */; };
+		4EE4129A2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56521678C1800F8933A /* Fort Foundry - RiftSoft-Bold.otf */; };
+		4EE4129B2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Demi.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56421678C1800F8933A /* Fort Foundry - RiftSoft-Demi.otf */; };
+		4EE4129C2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57621678C1A00F8933A /* Fort Foundry - RiftSoft-Light.otf */; };
+		4EE4129D2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57321678C1A00F8933A /* Fort Foundry - RiftSoft-Medium.otf */; };
+		4EE4129E2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57021678C1A00F8933A /* Fort Foundry - RiftSoft-Regular.otf */; };
+		4EE4129F2195AF2C002C99E4 /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56F21678C1900F8933A /* SourceSansPro-Black.ttf */; };
+		4EE412A02195AF2C002C99E4 /* SourceSansPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56721678C1900F8933A /* SourceSansPro-BlackItalic.ttf */; };
+		4EE412A12195AF2C002C99E4 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55C21678C1800F8933A /* SourceSansPro-Bold.ttf */; };
+		4EE412A22195AF2C002C99E4 /* SourceSansPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56921678C1900F8933A /* SourceSansPro-BoldItalic.ttf */; };
+		4EE412A32195AF2C002C99E4 /* SourceSansPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55F21678C1800F8933A /* SourceSansPro-ExtraLight.ttf */; };
+		4EE412A42195AF2C002C99E4 /* SourceSansPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56A21678C1900F8933A /* SourceSansPro-ExtraLightItalic.ttf */; };
+		4EE412A52195AF2C002C99E4 /* SourceSansPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56021678C1800F8933A /* SourceSansPro-Italic.ttf */; };
+		4EE412A62195AF2C002C99E4 /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56221678C1800F8933A /* SourceSansPro-Light.ttf */; };
+		4EE412A72195AF2C002C99E4 /* SourceSansPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57521678C1A00F8933A /* SourceSansPro-LightItalic.ttf */; };
+		4EE412A82195AF2C002C99E4 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57121678C1A00F8933A /* SourceSansPro-Regular.ttf */; };
+		4EE412A92195AF2C002C99E4 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55D21678C1800F8933A /* SourceSansPro-SemiBold.ttf */; };
+		4EE412AA2195AF2C002C99E4 /* SourceSansPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56D21678C1900F8933A /* SourceSansPro-SemiBoldItalic.ttf */; };
+		4EE412AC2195C799002C99E4 /* ViewWithTouchThrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE412AB2195C799002C99E4 /* ViewWithTouchThrough.swift */; };
 		4EF9DDB22187215400C4D7E8 /* NewInvestmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9DDB12187215400C4D7E8 /* NewInvestmentViewController.swift */; };
 		A0CF204C5C3C29CBF13D0C8C /* Pods_Investments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +76,11 @@
 		4E09F24B2191A81100E064C1 /* WithdrawalDepositsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalDepositsCell.swift; sourceTree = "<group>"; };
 		4E09F24C2191A81100E064C1 /* WithdrawalDepositsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalDepositsCell.xib; sourceTree = "<group>"; };
 		4E09F24F2191C11A00E064C1 /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
+		4E09F29D219439EF00E064C1 /* ViewWithDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithDesignables.swift; sourceTree = "<group>"; };
+		4E09F29F21943C4800E064C1 /* PickerWithDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerWithDesignables.swift; sourceTree = "<group>"; };
+		4E09F2A12194440700E064C1 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		4E09F2A3219445DE00E064C1 /* TextFieldWithDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithDesignables.swift; sourceTree = "<group>"; };
+		4E09F2A5219451B300E064C1 /* ButtonWithDesignables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithDesignables.swift; sourceTree = "<group>"; };
 		4E4DCBD3218B3E0C0026531E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E4DCBD5218C6B720026531E /* InvestmentLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentLookViewController.swift; sourceTree = "<group>"; };
 		4E95E5422167732100F8933A /* Investments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Investments.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +129,8 @@
 		4E95E5A821773DF900F8933A /* Investments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Investments.swift; sourceTree = "<group>"; };
 		4E95E5AB21776EFC00F8933A /* InvestmentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentsCell.swift; sourceTree = "<group>"; };
 		4E95E5AC21776EFC00F8933A /* InvestmentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestmentsCell.xib; sourceTree = "<group>"; };
+		4EE4128921959A49002C99E4 /* Popover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Popover.storyboard; sourceTree = "<group>"; };
+		4EE412AB2195C799002C99E4 /* ViewWithTouchThrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithTouchThrough.swift; sourceTree = "<group>"; };
 		4EF9DDB12187215400C4D7E8 /* NewInvestmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvestmentViewController.swift; sourceTree = "<group>"; };
 		705A31041BFCF14EBD4243FE /* Pods-Investments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investments/Pods-Investments.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +244,7 @@
 				4E95E5A221773BFF00F8933A /* InvestmentsViewController.swift */,
 				4EF9DDB12187215400C4D7E8 /* NewInvestmentViewController.swift */,
 				4E4DCBD5218C6B720026531E /* InvestmentLookViewController.swift */,
+				4E09F2A12194440700E064C1 /* PopoverViewController.swift */,
 				4E95E5A721773C6F00F8933A /* Custom Cells */,
 			);
 			path = Controllers;
@@ -238,6 +253,7 @@
 		4E95E5A521773C3300F8933A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4EE4128921959A49002C99E4 /* Popover.storyboard */,
 				4E95E5492167732100F8933A /* Main.storyboard */,
 				4E95E54E2167732800F8933A /* LaunchScreen.storyboard */,
 			);
@@ -252,6 +268,11 @@
 				4E95E54C2167732800F8933A /* Assets.xcassets */,
 				4E95E55721678C0300F8933A /* Fonts */,
 				4E09F24F2191C11A00E064C1 /* FloatingActionButton.swift */,
+				4E09F29D219439EF00E064C1 /* ViewWithDesignables.swift */,
+				4E09F29F21943C4800E064C1 /* PickerWithDesignables.swift */,
+				4E09F2A3219445DE00E064C1 /* TextFieldWithDesignables.swift */,
+				4E09F2A5219451B300E064C1 /* ButtonWithDesignables.swift */,
+				4EE412AB2195C799002C99E4 /* ViewWithTouchThrough.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -337,45 +358,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EE412922195AF2C002C99E4 /* Fort Foundry - Rift Soft Italic.otf in Resources */,
+				4EE412A82195AF2C002C99E4 /* SourceSansPro-Regular.ttf in Resources */,
+				4EE4128B2195AF2C002C99E4 /* Fort Foundry - Rift Bold Italic.otf in Resources */,
 				4E95E5502167732800F8933A /* LaunchScreen.storyboard in Resources */,
-				4E09F25D2193028700E064C1 /* Fort Foundry - Rift-Light.otf in Resources */,
-				4E09F2642193028700E064C1 /* Fort Foundry - RiftSoft-Regular.otf in Resources */,
-				4E09F25E2193028700E064C1 /* Fort Foundry - Rift-Medium.otf in Resources */,
-				4E09F27C219302B400E064C1 /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
-				4E09F2562193028700E064C1 /* Fort Foundry - Rift Soft Bold Italic.otf in Resources */,
-				4E09F27A219302B400E064C1 /* SourceSansPro-Regular.ttf in Resources */,
-				4E09F2582193028700E064C1 /* Fort Foundry - Rift Soft Italic.otf in Resources */,
-				4E09F2572193028700E064C1 /* Fort Foundry - Rift Soft Demi Italic.otf in Resources */,
-				4E09F2532193028700E064C1 /* Fort Foundry - Rift Italic.otf in Resources */,
-				4E09F2632193028700E064C1 /* Fort Foundry - RiftSoft-Medium.otf in Resources */,
-				4E09F2542193028700E064C1 /* Fort Foundry - Rift Light Italic.otf in Resources */,
+				4EE412A62195AF2C002C99E4 /* SourceSansPro-Light.ttf in Resources */,
 				4E95E5AE21776EFC00F8933A /* InvestmentsCell.xib in Resources */,
-				4E09F279219302B400E064C1 /* SourceSansPro-LightItalic.ttf in Resources */,
-				4E09F27B219302B400E064C1 /* SourceSansPro-SemiBold.ttf in Resources */,
-				4E09F2602193028700E064C1 /* Fort Foundry - RiftSoft-Bold.otf in Resources */,
-				4E09F2522193028700E064C1 /* Fort Foundry - Rift Demi Italic.otf in Resources */,
-				4E09F25C2193028700E064C1 /* Fort Foundry - Rift-Demi.otf in Resources */,
-				4E09F25A2193028700E064C1 /* Fort Foundry - Rift Soft Medium Italic.otf in Resources */,
 				4E09F24A21919F0900E064C1 /* GainsCell.xib in Resources */,
-				4E09F25F2193028700E064C1 /* Fort Foundry - Rift-Regular.otf in Resources */,
-				4E09F276219302B400E064C1 /* SourceSansPro-ExtraLightItalic.ttf in Resources */,
-				4E09F277219302B400E064C1 /* SourceSansPro-Italic.ttf in Resources */,
-				4E09F273219302B400E064C1 /* SourceSansPro-Bold.ttf in Resources */,
+				4EE4129E2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Regular.otf in Resources */,
+				4EE412982195AF2C002C99E4 /* Fort Foundry - Rift-Medium.otf in Resources */,
 				4E95E54D2167732800F8933A /* Assets.xcassets in Resources */,
+				4EE4129C2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Light.otf in Resources */,
+				4EE412952195AF2C002C99E4 /* Fort Foundry - Rift-Bold.otf in Resources */,
+				4EE412A72195AF2C002C99E4 /* SourceSansPro-LightItalic.ttf in Resources */,
+				4EE412932195AF2C002C99E4 /* Fort Foundry - Rift Soft Light Italic.otf in Resources */,
+				4EE412992195AF2C002C99E4 /* Fort Foundry - Rift-Regular.otf in Resources */,
+				4EE412A02195AF2C002C99E4 /* SourceSansPro-BlackItalic.ttf in Resources */,
+				4EE4129A2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Bold.otf in Resources */,
+				4EE412A42195AF2C002C99E4 /* SourceSansPro-ExtraLightItalic.ttf in Resources */,
+				4EE412A12195AF2C002C99E4 /* SourceSansPro-Bold.ttf in Resources */,
+				4EE4128E2195AF2C002C99E4 /* Fort Foundry - Rift Light Italic.otf in Resources */,
+				4EE4129B2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Demi.otf in Resources */,
+				4EE412942195AF2C002C99E4 /* Fort Foundry - Rift Soft Medium Italic.otf in Resources */,
+				4EE412A52195AF2C002C99E4 /* SourceSansPro-Italic.ttf in Resources */,
 				4E95E54B2167732100F8933A /* Main.storyboard in Resources */,
-				4E09F274219302B400E064C1 /* SourceSansPro-BoldItalic.ttf in Resources */,
-				4E09F278219302B400E064C1 /* SourceSansPro-Light.ttf in Resources */,
-				4E09F2512193028700E064C1 /* Fort Foundry - Rift Bold Italic.otf in Resources */,
-				4E09F272219302B400E064C1 /* SourceSansPro-BlackItalic.ttf in Resources */,
-				4E09F271219302B400E064C1 /* SourceSansPro-Black.ttf in Resources */,
-				4E09F275219302B400E064C1 /* SourceSansPro-ExtraLight.ttf in Resources */,
-				4E09F2622193028700E064C1 /* Fort Foundry - RiftSoft-Light.otf in Resources */,
-				4E09F25B2193028700E064C1 /* Fort Foundry - Rift-Bold.otf in Resources */,
+				4EE412A22195AF2C002C99E4 /* SourceSansPro-BoldItalic.ttf in Resources */,
+				4EE4128F2195AF2C002C99E4 /* Fort Foundry - Rift Medium Italic.otf in Resources */,
+				4EE412AA2195AF2C002C99E4 /* SourceSansPro-SemiBoldItalic.ttf in Resources */,
+				4EE4128A21959A4A002C99E4 /* Popover.storyboard in Resources */,
+				4EE4128C2195AF2C002C99E4 /* Fort Foundry - Rift Demi Italic.otf in Resources */,
+				4EE4129F2195AF2C002C99E4 /* SourceSansPro-Black.ttf in Resources */,
+				4EE4128D2195AF2C002C99E4 /* Fort Foundry - Rift Italic.otf in Resources */,
+				4EE412972195AF2C002C99E4 /* Fort Foundry - Rift-Light.otf in Resources */,
 				4E09F24E2191A81100E064C1 /* WithdrawalDepositsCell.xib in Resources */,
+				4EE412912195AF2C002C99E4 /* Fort Foundry - Rift Soft Demi Italic.otf in Resources */,
+				4EE412902195AF2C002C99E4 /* Fort Foundry - Rift Soft Bold Italic.otf in Resources */,
+				4EE4129D2195AF2C002C99E4 /* Fort Foundry - RiftSoft-Medium.otf in Resources */,
+				4EE412A32195AF2C002C99E4 /* SourceSansPro-ExtraLight.ttf in Resources */,
+				4EE412A92195AF2C002C99E4 /* SourceSansPro-SemiBold.ttf in Resources */,
 				4E4DCBD4218B3E0C0026531E /* README.md in Resources */,
-				4E09F2592193028700E064C1 /* Fort Foundry - Rift Soft Light Italic.otf in Resources */,
-				4E09F2612193028700E064C1 /* Fort Foundry - RiftSoft-Demi.otf in Resources */,
-				4E09F2552193028700E064C1 /* Fort Foundry - Rift Medium Italic.otf in Resources */,
+				4EE412962195AF2C002C99E4 /* Fort Foundry - Rift-Demi.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,16 +457,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E09F2A22194440700E064C1 /* PopoverViewController.swift in Sources */,
 				4E95E59D216E085C00F8933A /* Constants.swift in Sources */,
 				4E95E5A321773BFF00F8933A /* InvestmentsViewController.swift in Sources */,
+				4E09F29E219439EF00E064C1 /* ViewWithDesignables.swift in Sources */,
 				4E95E59B216B5EC200F8933A /* PickerView.swift in Sources */,
+				4E09F2A6219451B300E064C1 /* ButtonWithDesignables.swift in Sources */,
+				4EE412AC2195C799002C99E4 /* ViewWithTouchThrough.swift in Sources */,
 				4E09F24921919F0900E064C1 /* GainsCell.swift in Sources */,
 				4E95E5AD21776EFC00F8933A /* InvestmentsCell.swift in Sources */,
 				4E09F24D2191A81100E064C1 /* WithdrawalDepositsCell.swift in Sources */,
+				4E09F2A021943C4800E064C1 /* PickerWithDesignables.swift in Sources */,
 				4E4DCBD6218C6B720026531E /* InvestmentLookViewController.swift in Sources */,
 				4E09F2502191C11A00E064C1 /* FloatingActionButton.swift in Sources */,
 				4E95E5A921773DF900F8933A /* Investments.swift in Sources */,
 				4E95E5482167732100F8933A /* ForecasterViewController.swift in Sources */,
+				4E09F2A4219445DE00E064C1 /* TextFieldWithDesignables.swift in Sources */,
 				4E95E5462167732100F8933A /* AppDelegate.swift in Sources */,
 				4E95E599216B5DF100F8933A /* ResultsViewController.swift in Sources */,
 				4EF9DDB22187215400C4D7E8 /* NewInvestmentViewController.swift in Sources */,

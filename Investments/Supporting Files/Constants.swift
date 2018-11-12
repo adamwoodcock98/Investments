@@ -20,7 +20,7 @@ class Constants : NSObject {
     static func convertStringToFormattedString(input: String) -> (integerValue: Int,doubleValue : Double, stringValue: String) {
         let integer = Int(input) ?? 0
         let double = Double(input) ?? 0
-        let number = NSNumber(value: integer)
+        let number = NSNumber(value: double)
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.locale = Locale.current
@@ -48,6 +48,38 @@ class Constants : NSObject {
         formatter.timeStyle = .none
         
         return formatter.string(from: date)
+    }
+    
+    static func convertDDMMYYToFormattedDate(dd: Int, mm: Int, yy: Int) -> Date {
+        var yyyy : String = ""
+        var formattedDD : String = ""
+        var formattedMM : String = ""
+        switch yy {
+        case 0...30:
+            yyyy = "20\(yy)"
+        case 31...99:
+            yyyy = "19\(yy)"
+        default:
+            yyyy = "0000"
+        }
+        
+        switch dd {
+        case 1...9:
+            formattedDD = "0\(dd)"
+        default:
+            formattedDD = "\(dd)"
+        }
+        
+        switch mm {
+        case 1...9:
+            formattedMM = "0\(mm)"
+        default:
+            formattedMM = "\(mm)"
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter.date(from: "\(formattedDD)/\(formattedMM)/\(yyyy)")!
     }
     
 }
@@ -315,5 +347,11 @@ extension String {
 extension Double {
     var rounded2DecimalPlaces : Double {
         return ((self * 100).rounded()) / 100
+    }
+}
+
+extension NSLayoutConstraint {
+    func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
     }
 }

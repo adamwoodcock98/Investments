@@ -38,17 +38,22 @@ class InvestmentLookViewController: UIViewController {
     @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var initialInvestmentTextField: UITextField!
     
-    
     let realm = try! Realm()
     let yellow = UIColor(hexString: "F5B316")
     
+    var notificationGains : NotificationToken? = nil
+    var notificationWithdrawals : NotificationToken? = nil
+    var notificationDeposits : NotificationToken? = nil
     var currentInvestment : Investments!
     var currentInvestmentGains : Results<Gains>!
     var currentInvestmentWithdrawals : Results<Withdrawals>!
     var currentInvestmentDeposits : Results<Deposits>!
+    var currentInvestmentCombinedExtras : Results<CombinedExtras>?
     var investmentID : String!
     var totalInvested : Double!
     var mostRecentGainObject : Gains!
+    var popoverSender : String = ""
+    var gainsDictionary : [Double : Date] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +61,7 @@ class InvestmentLookViewController: UIViewController {
         configureRealm()
         configureArithmetic()
         configureUI()
+        listenForNotifications()
     }
     
     //MARK: - Functions
@@ -83,11 +89,32 @@ class InvestmentLookViewController: UIViewController {
     func configureArithmetic() {
         //Calculate running total
         //Calculate total invested
-        totalInvested = 100.0
+        calculateTotalInvested()
         //Calculate most recent gain
         let gain = Gains(); gain.percentage = 9.8; gain.timestamp = Date()
         mostRecentGainObject = gain
+        
+        
     }
+    
+    func calculateTotalInvested() {
+        var totalDeposits : Double = 0.0
+        for entry in currentInvestmentDeposits {
+            totalDeposits += entry.amount
+        }
+        totalInvested = totalDeposits + currentInvestment.initialInvestment
+        totalInvestedLabel.text = Constants.convertStringToFormattedString(input: "\(totalInvested!)").stringValue
+    }
+    
+    func calculateInvestmentValue() {
+        
+    }
+    
+    func combineRealmRelationshipDatabases() {
+        
+    }
+    
+    //Calculate gains
     
     //Configure the UI to display correct values, and design elements.
     func configureUI() {
@@ -133,7 +160,9 @@ class InvestmentLookViewController: UIViewController {
         mostRecentGainView.layer.borderColor = yellow?.cgColor
         mostRecentGainView.layer.cornerRadius = 8
         mostRecentGainPercentLabel.text = Constants.convertStringToFormattedString(input: "\(currentInvestment.initialInvestment)").stringValue
-        mostRecentGainDateLabel.text = "\(Constants.formatDateToLongDate(date: mostRecentGainObject.timestamp!))"
+        let initialInvestmentDate = Constants.convertDDMMYYToFormattedDate(dd: currentInvestment.dayStarted, mm: currentInvestment.monthStarted, yy: currentInvestment.yearStarted)
+        let initialInvestmentDateString = Constants.formatDateToLongDate(date: initialInvestmentDate)
+        mostRecentGainDateLabel.text = initialInvestmentDateString
         //Configure final section
         multiView.layer.borderColor = yellow?.cgColor
         multiView.layer.borderWidth = 0
@@ -146,7 +175,7 @@ class InvestmentLookViewController: UIViewController {
         miniTableView.dataSource = self
         let cellNibGains = UINib(nibName: "GainsCell", bundle: nil)
         miniTableView.register(cellNibGains, forCellReuseIdentifier: "gains")
-        let cellNibWD = UINib(nibName: "InvestmentsCell", bundle: nil)
+        let cellNibWD = UINib(nibName: "WithdrawalDepositsCell", bundle: nil)
         miniTableView.register(cellNibWD, forCellReuseIdentifier: "normal")
         //Configure FAB expand background
         bigCircleBackgroundView.layer.cornerRadius = 375 / 2
@@ -155,6 +184,7 @@ class InvestmentLookViewController: UIViewController {
         bigCircleBackgroundView.layer.shadowOpacity = 0.3
         bigCircleBackgroundView.layer.shadowOffset = CGSize.zero
         bigCircleBackgroundView.layer.shadowRadius = 20
+        bigCircleBackgroundView.isUserInteractionEnabled = false
         piggyMinusOutlet.transform = CGAffineTransform(translationX: -10, y: -10)
         piggyPlusOutlet.transform = CGAffineTransform(translationX: -10, y: -10)
         piggyGrowthOutlet.transform = CGAffineTransform(translationX: -10, y: -10)
@@ -164,11 +194,57 @@ class InvestmentLookViewController: UIViewController {
         initialInvestmentTextField.text = Constants.convertStringToFormattedString(input: "\(currentInvestment.initialInvestment)").stringValue
     }
     
+    func listenForNotifications() {
+        notificationGains = currentInvestmentGains.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+            case .error:
+                print("error")
+            }
+        })
+        
+        notificationWithdrawals = currentInvestmentWithdrawals.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+            case .error:
+                print("error")
+            }
+        })
+        
+        notificationDeposits = currentInvestmentDeposits.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+            case .error:
+                print("error")
+            }
+        })
+    }
+    
     func closeFAB() {
         self.bigCircleBackgroundView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        self.piggyMinusOutlet.transform = CGAffineTransform(translationX: -10, y: -10)
-        self.piggyPlusOutlet.transform = CGAffineTransform(translationX: -10, y: -10)
-        self.piggyGrowthOutlet.transform = CGAffineTransform(translationX: -10, y: -10)
+        self.piggyMinusOutlet.transform = CGAffineTransform(translationX: -10, y: 0)
+        self.piggyPlusOutlet.transform = CGAffineTransform(translationX: 0, y: -10)
+        self.piggyGrowthOutlet.transform = CGAffineTransform(translationX: -8, y: -8)
+    }
+    
+    func showPopover(sender: String) {
+        popoverSender = sender
+        performSegue(withIdentifier: "goToPopover", sender: self)
     }
     
     //MARK: Realm Functions
@@ -203,6 +279,16 @@ class InvestmentLookViewController: UIViewController {
         }
     }
     
+    //MARK: Segue Preparations
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPopover" {
+            let destination = segue.destination as! PopoverViewController
+            destination.currentInvestmentID = investmentID
+            destination.currentInvestment = currentInvestment
+            destination.newEntryType = "\(popoverSender)"
+        }
+    }
+    
     //MARK: IBActions
     @IBAction func segmentedControlChanged(_ sender: Any) {
         miniTableView.reloadData()
@@ -212,13 +298,16 @@ class InvestmentLookViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             if self.bigCircleBackgroundView.transform == .identity {
                 self.closeFAB()
+                self.bigCircleBackgroundView.isUserInteractionEnabled = false
+                
             } else {
                 self.bigCircleBackgroundView.transform = .identity
+                self.bigCircleBackgroundView.isUserInteractionEnabled = true
             }
         }
         
         if self.bigCircleBackgroundView.transform == .identity {
-            UIView.animate(withDuration: 0.6, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
+            UIView.animate(withDuration: 0.6, delay: 0.2, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
                 self.piggyMinusOutlet.transform = .identity
                 self.piggyPlusOutlet.transform = .identity
                 self.piggyGrowthOutlet.transform = .identity
@@ -240,7 +329,7 @@ class InvestmentLookViewController: UIViewController {
             descriptionTextFIeld.isSelectable = false
             descriptionTextFIeld.isHidden = false
             descriptionTextFIeld.isEditable = false
-            if descriptionTextFIeld.text == "" || descriptionTextFIeld.text == nil {
+            if descriptionTextFIeld.text == "" || descriptionTextFIeld.text == nil || descriptionTextFIeld.text == "Tap the edit button in the top right to add a description" {
                 newDescription = ""
                 descriptionTextFIeld.text = "Tap the edit button in the top right to add a description"
                 descriptionTextFIeld.textColor = UIColor.darkGray.lighten(byPercentage: 0.1)
@@ -266,6 +355,18 @@ class InvestmentLookViewController: UIViewController {
             }
         }
 
+    }
+    
+    @IBAction func plusPiggyTapped(_ sender: Any) {
+        showPopover(sender: "Deposit")
+    }
+    
+    @IBAction func growthPiggyTapped(_ sender: Any) {
+        showPopover(sender: "Gain")
+    }
+    
+    @IBAction func minusPiggyTapped(_ sender: Any) {
+        showPopover(sender: "Withdrawal")
     }
     
 
@@ -297,7 +398,8 @@ extension InvestmentLookViewController: UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: "normal", for: indexPath) as! WithdrawalDepositsCell
             cell.delegate = self
             let currentRow = currentInvestmentWithdrawals[indexPath.row]
-            cell.title.text = Constants.convertStringToFormattedString(input: String(currentRow.amount)).stringValue
+            let convertedAmount = "\(currentRow.amount)"
+            cell.title.text = Constants.convertStringToFormattedString(input: convertedAmount).stringValue
             cell.date.text = Constants.formatDateToLongDate(date: currentRow.timestamp!)
             
             return cell

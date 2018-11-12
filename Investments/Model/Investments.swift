@@ -31,6 +31,7 @@ class Investments : Object {
     let gains = List<Gains>()
     let withdrawals = List<Withdrawals>()
     let deposits = List<Deposits>()
+    let combinedExtras = List<CombinedExtras>()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -61,4 +62,11 @@ class Deposits : Object {
     @objc dynamic var timestamp : Date!
     @objc dynamic var amount : Double = 0.0
     let parent = LinkingObjects(fromType: Investments.self, property: "deposits")
+}
+
+class CombinedExtras : Object {
+    @objc dynamic var entryType : String!
+    @objc dynamic var amountOrPercent : Double = 0.0
+    @objc dynamic var timestamp : Date!
+    let parent = LinkingObjects(fromType: Investments.self, property: "combinedExtras")
 }
