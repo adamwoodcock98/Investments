@@ -9,10 +9,12 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import ChameleonFramework
 
 class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     let realm = try! Realm()
     let cellSpacing : CGFloat = 5.0
@@ -48,6 +50,9 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
         //Notifications
         listenForNotifications()
         
+        //Display a label if the table is blank
+        isTableBlank()
+        
     }
     
     //MARK: - Functions
@@ -57,8 +62,9 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "investmentCell", for: indexPath) as! InvestmentsCell
         
+        
         if let item = investmentArray?[indexPath.section] {
-            let totalAsString = "\(item.runningTotal)"
+            let totalAsString = "\(item.runningTotal.rounded2DecimalPlaces)"
             let convertedTotal = Constants.convertStringToFormattedString(input: totalAsString)
             cell.title.text = item.title
             cell.percentChange.text = "\(item.mostRecentGain)%"
@@ -69,9 +75,6 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
             cell.price.text = "£22,582.11"
         }
         
-        cell.layer.cornerRadius = 8
-        cell.layer.borderWidth = 0
-        cell.clipsToBounds = true
         
         return cell
     }
@@ -103,14 +106,43 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
         performSegue(withIdentifier: "goToNewInvestmentLook", sender: self)
     }
     
+    //Assigning the swipe to delete actions for the tableview
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let cellToDelete = self.investmentArray![indexPath.section]
+            
+            do {
+                try self.realm.write {
+                    self.realm.delete(cellToDelete)
+                }
+            } catch {
+                let alert = UIAlertController(title: "Error", message: "There has been an error deleting this investment, please close the app and try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+        return [delete]
+    }
+    
+    
     //MARK: - TableView Configuration Function
     func configureTable() {
         tableView.delegate = self
         tableView.dataSource = self
         let cellNib = UINib(nibName: "InvestmentsCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "investmentCell")
-        tableView.estimatedRowHeight = 70
         tableView.separatorStyle = .none
+    }
+    
+    func isTableBlank() {
+        if investmentArray?.count == 0 {
+            emptyLabel.isHidden = false
+        } else {
+            emptyLabel.isHidden = true
+        }
     }
     
     //MARK: - Realm Functions
@@ -122,8 +154,10 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
             //Switch from the different results from the changes
             switch changes {
             case .initial:
+                self.isTableBlank()
                 self.tableView.reloadData()
             case .update:
+                self.isTableBlank()
                 self.tableView.reloadData()
             case .error(let error):
                 print("\(error)")

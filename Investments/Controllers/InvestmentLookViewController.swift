@@ -39,6 +39,7 @@ class InvestmentLookViewController: UIViewController {
     @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var initialInvestmentTextField: UITextField!
     
+    
     weak var axisFormatDelegate : IAxisValueFormatter?
     
     let realm = try! Realm()
@@ -57,6 +58,7 @@ class InvestmentLookViewController: UIViewController {
     var mostRecentGainObject : Gains!
     var popoverSender : String = ""
     var gainsDictionary : [Double : Date] = [:]
+    var growthDifferences : [Double] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,28 +72,6 @@ class InvestmentLookViewController: UIViewController {
     }
     
     //MARK: - Functions
-    
-    //Configure the Realm database to retrieve investment object.
-    func configureRealm() {
-        
-        //Assigning the currentInvestment variable the realm object associated with the investment ID passed in.
-        currentInvestment = realm.object(ofType: Investments.self, forPrimaryKey: investmentID)
-        
-        //Assigning the currentInvestmentGains variables with gains matching this investment
-        currentInvestmentGains = currentInvestment.gains.sorted(byKeyPath: "timestamp", ascending: true)
-        
-        //Assigning the currentInvestmentWithdrawals with withdrawals matching this investment
-        currentInvestmentWithdrawals = currentInvestment.withdrawals.sorted(byKeyPath: "timestamp", ascending: true)
-        
-        //Assigning the currentInvestmentDeposits with deposits matching this investment
-        currentInvestmentDeposits = currentInvestment.deposits.sorted(byKeyPath: "timestamp", ascending: true)
-        
-        //Assigning the currentInvestmentCombinedObjects with combined objects matching this investment
-        currentInvestmentCombinedExtras = currentInvestment.combinedExtras.sorted(byKeyPath: "timestamp", ascending: true)
-        
-        //Set navigation bar back button title
-        navigationItem.hidesBackButton = false
-    }
     
     //Configure arithmetic to load into the display
     func configureArithmetic() {
@@ -120,8 +100,11 @@ class InvestmentLookViewController: UIViewController {
         investmentValueLabel.text = Constants.convertStringToFormattedString(input: "\(currentInvestment.initialInvestment)").stringValue
         
         var runningTotal : Double = currentInvestment.initialInvestment
+        
         for entry in currentInvestmentCombinedExtras {
             if entry.entryType == "Gain" {
+                let gDifference = (runningTotal * (1 + (entry.amountOrPercent / 100))) - runningTotal
+                growthDifferences.append(gDifference)
                 runningTotal = runningTotal * (1 + (entry.amountOrPercent / 100))
             }
             
@@ -153,84 +136,26 @@ class InvestmentLookViewController: UIViewController {
     }
     
     func calculateChange() {
-        let increaseOrDecrease = (((currentInvestment.runningTotal - currentInvestment.initialInvestment) / currentInvestment.initialInvestment) * 100).rounded2DecimalPlaces
+        var depositTotals = 0.0
+        for entry in currentInvestmentDeposits {
+            depositTotals += entry.amount
+        }
+        let increaseOrDecrease = (((currentInvestment.runningTotal - (currentInvestment.initialInvestment + depositTotals)) / (currentInvestment.initialInvestment + depositTotals)) * 100).rounded2DecimalPlaces
         
         percentChangeLabel.text = "\(increaseOrDecrease)%"
         
+        do {
+            try realm.write {
+                currentInvestment.mostRecentGain = increaseOrDecrease.rounded2DecimalPlaces
+            }
+        } catch {
+            print(error)
+        }
     }
     
-    func updateChartWithData() {
-        var gainDataEntries = [ChartDataEntry]()
-        for (_ , element) in currentInvestmentGains.enumerated() {
-            let timeInterval : TimeInterval = element.timestamp.timeIntervalSince1970
-            
-            let dataEntry = ChartDataEntry(x: Double(timeInterval), y: element.percentage)
-            
-            gainDataEntries.append(dataEntry)
-        }
-        
-        let line1 = LineChartDataSet(values: gainDataEntries, label: "Gains")
-        line1.colors = [yellow!]
-        line1.circleColors = [yellow!]
-        line1.circleHoleColor = yellow!
-        line1.circleRadius = 5
-        line1.valueTextColor = UIColor(hexString: "B7B7B7")
-        line1.valueFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 12), size: 12)
-        
-        
-        
-        
-        let data1 = LineChartData()
-        data1.addDataSet(line1)
-        
-        chartView.data = data1
-        chartView.chartDescription?.text = ""
-        chartView.drawGridBackgroundEnabled = false
-        
-        
-        chartView.backgroundColor = UIColor.darkGray
-        chartView.rightAxis.enabled = false
-        chartView.pinchZoomEnabled = false
-        
-        let xAxis = chartView.xAxis
-        xAxis.valueFormatter = axisFormatDelegate
-        xAxis.labelTextColor = UIColor(hexString: "B7B7B7")
-        xAxis.labelPosition = .bottom
-        xAxis.labelFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 10), size: 10)
-        xAxis.xOffset = 0
-        xAxis.axisLineColor = yellow!
-        xAxis.axisLineWidth = 1
-        xAxis.spaceMin = 10
-        xAxis.spaceMax = 10
-        xAxis.drawGridLinesEnabled = true
-        xAxis.gridLineDashLengths = [CGFloat(4)]
-        xAxis.drawAxisLineEnabled = false
-        
-        let yAxis = chartView.leftAxis
-        yAxis.labelPosition = .outsideChart
-        yAxis.labelTextColor = UIColor(hexString: "B7B7B7")
-        yAxis.labelFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 14), size: 14)
-        yAxis.axisLineColor = yellow!
-        yAxis.axisLineWidth = 1
-        yAxis.spaceMin = 10
-        yAxis.spaceMax = 10
-        yAxis.drawGridLinesEnabled = true
-        yAxis.drawAxisLineEnabled = false
-        yAxis.gridLineDashLengths = [CGFloat(4)]
-        yAxis.xOffset = 10
-        
-        
-        let legend = chartView.legend
-        legend.enabled = false
-        legend.xEntrySpace = 0
-        legend.yEntrySpace = 0
-        legend.textColor = UIColor(hexString: "B7B7B7")
-        legend.font = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-Light", size: 14), size: 14)
-        legend.horizontalAlignment = .left
-        legend.verticalAlignment = .bottom
-        
-        
-    }
+    
+    
+    
     
     //Configure the UI to display correct values, and design elements.
     func configureUI() {
@@ -321,86 +246,6 @@ class InvestmentLookViewController: UIViewController {
         popoverSender = sender
         performSegue(withIdentifier: "goToPopover", sender: self)
     }
-    
-    //MARK: Realm Functions
-    
-    //Update object and present alert if fails
-    func updateRealm(investmentObject: Object) {
-        do {
-            try realm.write {
-                realm.add(investmentObject, update: true)
-            }
-        } catch {
-            print(error)
-            let alert = UIAlertController(title: "Error", message: "There has been an error saving the new information, please close the app and try again", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func listenForNotifications() {
-        notificationGains = currentInvestmentGains.observe({ (changes: RealmCollectionChange) in
-            switch changes {
-            case .update:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-                self.updateChartWithData()
-            case .initial:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-                self.updateChartWithData()
-            case .error:
-                print("error")
-            }
-        })
-        
-        notificationWithdrawals = currentInvestmentWithdrawals.observe({ (changes: RealmCollectionChange) in
-            switch changes {
-            case .update:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-                self.updateChartWithData()
-            case .initial:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-                self.updateChartWithData()
-            case .error:
-                print("error")
-            }
-        })
-        
-        notificationDeposits = currentInvestmentDeposits.observe({ (changes: RealmCollectionChange) in
-            switch changes {
-            case .update:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-                self.updateChartWithData()
-            case .initial:
-                self.configureArithmetic()
-                self.miniTableView.reloadData()
-                self.updateChartWithData()
-            case .error:
-                print("error")
-            }
-        })
-    }
-    
-    func deleteRealm(object: Object) {
-        do {
-            try realm.write {
-                realm.delete(object)
-            }
-        } catch {
-            let alert = UIAlertController(title: "Error", message: "There has been an error deleting this item, please close the app and try again", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
     
     //MARK: Segue Preparations
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -512,9 +357,10 @@ extension InvestmentLookViewController: UITableViewDelegate, UITableViewDataSour
             //Current row
             let currentRow = currentInvestmentGains[indexPath.row]
             //Assigning the cell properties
-            cell.title.text = Constants.convertStringToFormattedString(input: String(currentRow.difference)).stringValue
+            let difference = growthDifferences[indexPath.row].rounded2DecimalPlaces
+            cell.title.text = Constants.convertStringToFormattedString(input: String(difference)).stringValue
             cell.date.text = Constants.formatDateToLongDate(date: currentRow.timestamp!)
-            cell.percentage.text = "\(currentRow.percentage)%"
+            cell.percentage.text = "\(currentRow.percentage.rounded2DecimalPlaces)%"
 
             return cell
         case 1:
@@ -571,7 +417,8 @@ extension InvestmentLookViewController: UITableViewDelegate, UITableViewDataSour
                 self.deleteRealm(object: cellToDelete)
             }
             //Assigning a trash bin icon
-            deleteAction.image = UIImage(named: "delete")
+            //deleteAction.image = UIImage(named: "trashIcon")
+            deleteAction.font = UIFont(name: "SourceSansPro-SemiBold", size: 20)
             //Returning the action
             return [deleteAction]
             
@@ -583,7 +430,8 @@ extension InvestmentLookViewController: UITableViewDelegate, UITableViewDataSour
                 self.deleteRealm(object: cellToDelete)
             }
             
-            deleteAction.image = UIImage(named: "delete")
+            //deleteAction.image = UIImage(named: "trashIcon")
+            deleteAction.font = UIFont(name: "SourceSansPro-SemiBold", size: 20)
             
             return [deleteAction]
             
@@ -595,7 +443,8 @@ extension InvestmentLookViewController: UITableViewDelegate, UITableViewDataSour
                 self.deleteRealm(object: cellToDelete)
             }
             
-            deleteAction.image = UIImage(named: "delete")
+            //deleteAction.image = UIImage(named: "trashIcon")
+            deleteAction.font = UIFont(name: "SourceSansPro-SemiBold", size: 20)
             
             return [deleteAction]
             
@@ -629,5 +478,185 @@ extension InvestmentLookViewController : IAxisValueFormatter {
         dateFormatter.dateFormat = "dd/MM/yy"
         
         return dateFormatter.string(from: Date(timeIntervalSince1970: value))
+    }
+}
+
+//MARK: - Extension for chart functions
+extension InvestmentLookViewController {
+    
+    func updateChartWithData() {
+        var gainDataEntries = [ChartDataEntry]()
+        for (_ , element) in currentInvestmentGains.enumerated() {
+            let timeInterval : TimeInterval = element.timestamp.timeIntervalSince1970
+            
+            let dataEntry = ChartDataEntry(x: Double(timeInterval), y: element.percentage)
+            
+            gainDataEntries.append(dataEntry)
+        }
+        
+        let line1 = LineChartDataSet(values: gainDataEntries, label: "Gains")
+        line1.colors = [yellow!]
+        line1.circleColors = [yellow!]
+        line1.circleHoleColor = yellow!
+        line1.circleRadius = 5
+        line1.valueTextColor = UIColor(hexString: "B7B7B7")
+        line1.valueFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 12), size: 12)
+        
+        
+        
+        
+        let data1 = LineChartData()
+        data1.addDataSet(line1)
+        
+        chartView.data = data1
+        chartView.chartDescription?.text = ""
+        chartView.drawGridBackgroundEnabled = false
+        
+        
+        chartView.backgroundColor = UIColor.darkGray
+        chartView.rightAxis.enabled = false
+        chartView.pinchZoomEnabled = false
+        
+        let xAxis = chartView.xAxis
+        xAxis.valueFormatter = axisFormatDelegate
+        xAxis.labelTextColor = UIColor(hexString: "B7B7B7")
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 10), size: 10)
+        xAxis.xOffset = 0
+        xAxis.axisLineColor = yellow!
+        xAxis.axisLineWidth = 1
+        xAxis.spaceMin = 10
+        xAxis.spaceMax = 10
+        xAxis.drawGridLinesEnabled = true
+        xAxis.gridLineDashLengths = [CGFloat(4)]
+        xAxis.drawAxisLineEnabled = false
+        
+        let yAxis = chartView.leftAxis
+        yAxis.labelPosition = .outsideChart
+        yAxis.labelTextColor = UIColor(hexString: "B7B7B7")
+        yAxis.labelFont = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-SemiBold", size: 14), size: 14)
+        yAxis.axisLineColor = yellow!
+        yAxis.axisLineWidth = 1
+        yAxis.spaceMin = 10
+        yAxis.spaceMax = 10
+        yAxis.drawGridLinesEnabled = true
+        yAxis.drawAxisLineEnabled = false
+        yAxis.gridLineDashLengths = [CGFloat(4)]
+        yAxis.xOffset = 10
+        
+        
+        let legend = chartView.legend
+        legend.enabled = false
+        legend.xEntrySpace = 0
+        legend.yEntrySpace = 0
+        legend.textColor = UIColor(hexString: "B7B7B7")
+        legend.font = UIFont(descriptor: UIFontDescriptor(name: "SourceSansPro-Light", size: 14), size: 14)
+        legend.horizontalAlignment = .left
+        legend.verticalAlignment = .bottom
+        
+        
+    }
+}
+
+//MARK: - Extension for Realm Functions
+extension InvestmentLookViewController {
+    
+    //Configure the Realm database to retrieve investment object.
+    func configureRealm() {
+        
+        //Assigning the currentInvestment variable the realm object associated with the investment ID passed in.
+        currentInvestment = realm.object(ofType: Investments.self, forPrimaryKey: investmentID)
+        
+        //Assigning the currentInvestmentGains variables with gains matching this investment
+        currentInvestmentGains = currentInvestment.gains.sorted(byKeyPath: "timestamp", ascending: true)
+        
+        //Assigning the currentInvestmentWithdrawals with withdrawals matching this investment
+        currentInvestmentWithdrawals = currentInvestment.withdrawals.sorted(byKeyPath: "timestamp", ascending: true)
+        
+        //Assigning the currentInvestmentDeposits with deposits matching this investment
+        currentInvestmentDeposits = currentInvestment.deposits.sorted(byKeyPath: "timestamp", ascending: true)
+        
+        //Assigning the currentInvestmentCombinedObjects with combined objects matching this investment
+        currentInvestmentCombinedExtras = currentInvestment.combinedExtras.sorted(byKeyPath: "timestamp", ascending: true)
+        
+        //Set navigation bar back button title
+        navigationItem.hidesBackButton = false
+    }
+    
+    //Update object and present alert if fails
+    func updateRealm(investmentObject: Object) {
+        do {
+            try realm.write {
+                realm.add(investmentObject, update: true)
+            }
+        } catch {
+            print(error)
+            let alert = UIAlertController(title: "Error", message: "There has been an error saving the new information, please close the app and try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func listenForNotifications() {
+        notificationGains = currentInvestmentGains.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .error:
+                print("error")
+            }
+        })
+        
+        notificationWithdrawals = currentInvestmentWithdrawals.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .error:
+                print("error")
+            }
+        })
+        
+        notificationDeposits = currentInvestmentDeposits.observe({ (changes: RealmCollectionChange) in
+            switch changes {
+            case .update:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .initial:
+                self.configureArithmetic()
+                self.miniTableView.reloadData()
+                self.updateChartWithData()
+            case .error:
+                print("error")
+            }
+        })
+    }
+    
+    func deleteRealm(object: Object) {
+        do {
+            try realm.write {
+                realm.delete(object)
+            }
+        } catch {
+            let alert = UIAlertController(title: "Error", message: "There has been an error deleting this item, please close the app and try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
