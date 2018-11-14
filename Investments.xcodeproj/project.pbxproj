@@ -65,6 +65,7 @@
 		4EE412CD219AFA14002C99E4 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E57121678C1A00F8933A /* SourceSansPro-Regular.ttf */; };
 		4EE412CE219AFA14002C99E4 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E55D21678C1800F8933A /* SourceSansPro-SemiBold.ttf */; };
 		4EE412CF219AFA14002C99E4 /* SourceSansPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E95E56D21678C1900F8933A /* SourceSansPro-SemiBoldItalic.ttf */; };
+		4EE412D1219C282C002C99E4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE412D0219C282C002C99E4 /* SettingsViewController.swift */; };
 		4EF9DDB22187215400C4D7E8 /* NewInvestmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9DDB12187215400C4D7E8 /* NewInvestmentViewController.swift */; };
 		A0CF204C5C3C29CBF13D0C8C /* Pods_Investments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */; };
 /* End PBXBuildFile section */
@@ -131,6 +132,7 @@
 		4E95E5AC21776EFC00F8933A /* InvestmentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestmentsCell.xib; sourceTree = "<group>"; };
 		4EE4128921959A49002C99E4 /* Popover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Popover.storyboard; sourceTree = "<group>"; };
 		4EE412AB2195C799002C99E4 /* ViewWithTouchThrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithTouchThrough.swift; sourceTree = "<group>"; };
+		4EE412D0219C282C002C99E4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4EF9DDB12187215400C4D7E8 /* NewInvestmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvestmentViewController.swift; sourceTree = "<group>"; };
 		705A31041BFCF14EBD4243FE /* Pods-Investments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Investments/Pods-Investments.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC10C837FAFB1605B67C78B /* Pods_Investments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +247,7 @@
 				4EF9DDB12187215400C4D7E8 /* NewInvestmentViewController.swift */,
 				4E4DCBD5218C6B720026531E /* InvestmentLookViewController.swift */,
 				4E09F2A12194440700E064C1 /* PopoverViewController.swift */,
+				4EE412D0219C282C002C99E4 /* SettingsViewController.swift */,
 				4E95E5A721773C6F00F8933A /* Custom Cells */,
 			);
 			path = Controllers;
@@ -460,6 +463,7 @@
 				4E09F2A22194440700E064C1 /* PopoverViewController.swift in Sources */,
 				4E95E59D216E085C00F8933A /* Constants.swift in Sources */,
 				4E95E5A321773BFF00F8933A /* InvestmentsViewController.swift in Sources */,
+				4EE412D1219C282C002C99E4 /* SettingsViewController.swift in Sources */,
 				4E09F29E219439EF00E064C1 /* ViewWithDesignables.swift in Sources */,
 				4E95E59B216B5EC200F8933A /* PickerView.swift in Sources */,
 				4E09F2A6219451B300E064C1 /* ButtonWithDesignables.swift in Sources */,

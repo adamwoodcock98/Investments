@@ -75,6 +75,10 @@ class InvestmentsViewController: UIViewController ,UITableViewDelegate, UITableV
             cell.price.text = "£22,582.11"
         }
         
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = Constants.placeholderGrey
+        cell.selectedBackgroundView = backgroundView
+        
         
         return cell
     }
